@@ -1,0 +1,404 @@
+/* Ghosted AI Terminal Style */
+:root {
+    --ghosted-black: #000000;
+    --ghosted-green: #00FF99;
+    --ghosted-dark-green: #00cc7a;
+    --ghosted-gray: #333333;
+    --ghosted-light-gray: #aaaaaa;
+    --ghosted-white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--ghosted-black);
+    color: var(--ghosted-white);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.ghosted-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo */
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 3rem;
+}
+
+.ghosted-logo {
+    width: 80px;
+    height: auto;
+    animation: pulse 3s infinite alternate;
+}
+
+/* Terminal Styling */
+.terminal-header, 
+.terminal-input, 
+.terminal-response,
+.terminal-deployment {
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.terminal-header {
+    animation-delay: 0.5s;
+}
+
+.terminal-response {
+    animation-delay: 1.5s;
+}
+
+.terminal-input {
+    animation-delay: 3s;
+}
+
+.terminal-deployment {
+    animation-delay: 5s;
+}
+
+.prompt {
+    color: var(--ghosted-green);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.typed-text {
+    color: var(--ghosted-white);
+    position: relative;
+}
+
+#deploy-command {
+    border-right: 2px solid var(--ghosted-green);
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    width: 0;
+    animation: typing 2s steps(40) forwards;
+    animation-delay: 3.5s;
+}
+
+.terminal-response p,
+.terminal-deployment p {
+    color: var(--ghosted-white);
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.terminal-response p {
+    animation: fadeUp 0.5s ease forwards;
+    animation-delay: 2s;
+}
+
+.response-line {
+    opacity: 0;
+    animation: fadeUp 0.3s ease forwards;
+}
+
+.response-line:nth-child(1) { animation-delay: 5.5s; }
+.response-line:nth-child(2) { animation-delay: 6s; }
+.response-line:nth-child(3) { animation-delay: 6.5s; }
+.response-line:nth-child(4) { animation-delay: 7s; }
+.response-line:nth-child(5) { animation-delay: 7.5s; }
+.response-line:nth-child(6) { animation-delay: 8s; }
+.response-line:nth-child(7) { animation-delay: 8.5s; }
+.response-line:nth-child(8) { animation-delay: 9s; }
+.response-line:nth-child(9) { animation-delay: 9.5s; }
+.response-line:nth-child(10) { animation-delay: 10s; }
+.response-line:nth-child(11) { animation-delay: 10.5s; }
+.response-line:nth-child(12) { animation-delay: 11s; }
+.response-line:nth-child(13) { animation-delay: 11.5s; }
+
+.indent {
+    padding-left: 2rem;
+}
+
+.highlight {
+    color: var(--ghosted-green);
+    font-weight: 500;
+}
+
+.success {
+    color: var(--ghosted-green);
+}
+
+.status-running {
+    color: var(--ghosted-green);
+    font-weight: bold;
+}
+
+.instance-id, .ip-address, .command {
+    color: var(--ghosted-white);
+    font-weight: 500;
+}
+
+.final {
+    margin-top: 1rem;
+    color: var(--ghosted-white);
+    font-weight: 500;
+}
+
+/* Project Description */
+.project-description {
+    margin: 3rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 12s;
+}
+
+.project-description h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--ghosted-green);
+    font-weight: 500;
+}
+
+.project-description p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    font-size: 0.95rem;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 2rem 0;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 12.5s;
+}
+
+.tech-badge {
+    background-color: var(--ghosted-gray);
+    color: var(--ghosted-light-gray);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.tech-badge:hover {
+    background-color: #222222;
+    color: var(--ghosted-green);
+    border-color: var(--ghosted-green);
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+    transform: translateY(-3px);
+}
+
+/* CTA Button */
+.cta-container {
+    margin: 2rem 0;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 13s;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--ghosted-green);
+    color: var(--ghosted-black);
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.cta-button:hover {
+    background-color: var(--ghosted-dark-green);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 255, 153, 0.5);
+}
+
+.arrow {
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.cta-button:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Back Link */
+.back-link {
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    animation-delay: 13.5s;
+}
+
+.back-link a {
+    color: var(--ghosted-light-gray);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.back-link a:hover {
+    color: var(--ghosted-white);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .ghosted-container {
+        padding: 1.5rem;
+        text-align: center;
+    }
+    
+    .ghosted-logo {
+        width: 60px;
+    }
+    
+    .tech-stack {
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    
+    .tech-badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.8rem;
+    }
+    
+    .project-description {
+        text-align: left;
+    }
+    
+    .project-description h2 {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    
+    .project-description p {
+        font-size: 0.9rem;
+    }
+    
+    .terminal-header, 
+    .terminal-input, 
+    .terminal-response,
+    .terminal-deployment {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .prompt {
+        white-space: nowrap;
+    }
+    
+    #deploy-command {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+@media (max-width: 480px) {
+    .ghosted-container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
+    .logo-container {
+        margin: 1.5rem 0 2rem;
+    }
+    
+    .ghosted-logo {
+        width: 50px;
+    }
+    
+    .project-description {
+        margin: 2rem 0;
+    }
+    
+    .project-description p {
+        font-size: 0.85rem;
+        line-height: 1.7;
+    }
+    
+    .tech-stack {
+        gap: 0.4rem;
+    }
+    
+    .tech-badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.7rem;
+    }
+    
+    .cta-button {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .terminal-deployment {
+        font-size: 0.85rem;
+    }
+    
+    .indent {
+        padding-left: 1rem;
+    }
+}
