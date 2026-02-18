@@ -211,15 +211,15 @@ export default function About() {
   }, []);
 
   // Always trigger on mobile (no margin delay)
-  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '50px' : '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '200px' : '-100px' });
 
-  // Mobile: simple fade animation
+  // Mobile: instant, Desktop: staggered fade
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: isMobile ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
-        duration: isMobile ? 0.4 : 0.6,
+        duration: isMobile ? 0 : 0.6,
         staggerChildren: isMobile ? 0 : 0.1,
       },
     },
@@ -231,7 +231,7 @@ export default function About() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: isMobile ? 0.1 : 0.6,
+        duration: isMobile ? 0 : 0.6,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },

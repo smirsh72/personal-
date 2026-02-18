@@ -151,7 +151,7 @@ export default function Certifications() {
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
-  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '0px' : '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '200px' : '-100px' });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);

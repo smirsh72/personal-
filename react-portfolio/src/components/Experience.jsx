@@ -5,7 +5,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 const experiences = [
   {
     id: 1,
-    title: 'Site Reliability Engineer Intern',
+    title: 'Site Reliability Engineer',
     company: 'Mastercard',
     date: 'Summer 2025',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
@@ -17,7 +17,7 @@ const experiences = [
   },
   {
     id: 2,
-    title: 'Technical Product Manager',
+    title: 'Product Manager',
     company: 'Nutrify AI',
     date: 'Spring 2025',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
@@ -123,7 +123,7 @@ export default function Experience() {
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
-  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '0px' : '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '200px' : '-100px' });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
