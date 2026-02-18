@@ -243,7 +243,7 @@ export default function About() {
     if (!isMobile || !sectionRef.current) return;
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setMobileVisible(true); },
-      { threshold: 0.05 }
+      { rootMargin: '300px 0px' }
     );
     observer.observe(sectionRef.current);
     return () => observer.disconnect();
