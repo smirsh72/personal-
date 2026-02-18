@@ -150,11 +150,16 @@ function WordCarousel({ reducedMotion, isMobile }) {
 export default function Hero() {
   const reducedMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(getInitialMobile);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    requestAnimationFrame(() => setMounted(true));
   }, []);
 
   const scrollToNext = () => {
@@ -164,13 +169,13 @@ export default function Hero() {
     }
   };
 
-  // Mobile: show content immediately, no entrance animations
+  // Mobile: fade in together once mounted
   if (isMobile) {
     return (
       <section id="hero" className="hero">
         <CherryBlossomBackground reducedMotion={reducedMotion} isMobile={true} />
         <EtherealHorizon reducedMotion={reducedMotion} isMobile={true} />
-        <div className="content">
+        <div className={`content mobile-fade ${mounted ? 'mobile-visible' : ''}`}>
           <div className="intro-sequence">
             <div className="intro-text">
               <h1 className="hero-text">
@@ -183,7 +188,7 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="scroll-indicator" onClick={scrollToNext} style={{ cursor: 'pointer', opacity: 0.6 }}>
+        <div className={`scroll-indicator mobile-fade ${mounted ? 'mobile-visible' : ''}`} onClick={scrollToNext} style={{ cursor: 'pointer' }}>
           <div className="scroll-arrow-wrapper">
             <div className="scroll-arrow" />
           </div>

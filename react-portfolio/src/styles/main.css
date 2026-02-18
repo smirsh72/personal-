@@ -1515,6 +1515,18 @@ body {
     will-change: auto;
     transform: translateZ(0);
   }
+
+  /* Mobile fade-in animation */
+  .mobile-fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .mobile-fade.mobile-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 480px) {

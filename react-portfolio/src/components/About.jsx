@@ -237,11 +237,22 @@ export default function About() {
     },
   };
 
-  // Mobile: zero motion wrappers — render plain HTML instantly
+  // Mobile: lightweight CSS fade-in via IntersectionObserver (no Framer Motion)
+  const [mobileVisible, setMobileVisible] = useState(false);
+  useEffect(() => {
+    if (!isMobile || !sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setMobileVisible(true); },
+      { threshold: 0.05 }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, [isMobile]);
+
   if (isMobile) {
     return (
       <section id="about" className="modern-section about-section" ref={sectionRef}>
-        <div className="container">
+        <div className={`container mobile-fade ${mobileVisible ? 'mobile-visible' : ''}`}>
           <h2 className="section-subtitle text-center">
             <span className="section-title-gradient">About Me</span>
           </h2>
