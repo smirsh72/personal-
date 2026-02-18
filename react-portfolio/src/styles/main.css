@@ -244,6 +244,11 @@ body {
   object-fit: cover;
   object-position: center center;
   display: block;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.cherry-blossom-video.video-ready {
   opacity: 0.3;
 }
 
@@ -265,7 +270,7 @@ body {
 }
 
 /* Dark mode: let blossoms breathe — dusk, not night */
-[data-theme="dark"] .cherry-blossom-video {
+[data-theme="dark"] .cherry-blossom-video.video-ready {
   opacity: 0.35;
 }
 

@@ -7,14 +7,26 @@
  * Props:
  *   reducedMotion (boolean) — if true, video is paused on first frame (still image fallback)
  */
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function CherryBlossomBackground({ reducedMotion = false }) {
   const videoRef = useRef(null);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    if (videoRef.current && !reducedMotion) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleReady = () => {
+      setIsReady(true);
+      if (!reducedMotion) video.play().catch(() => {});
+    };
+
+    if (video.readyState >= 3) {
+      handleReady();
+    } else {
+      video.addEventListener('canplaythrough', handleReady, { once: true });
+      return () => video.removeEventListener('canplaythrough', handleReady);
     }
   }, [reducedMotion]);
 
@@ -22,7 +34,7 @@ export default function CherryBlossomBackground({ reducedMotion = false }) {
     <div className="cherry-blossom-bg">
       <video
         ref={videoRef}
-        className="cherry-blossom-video"
+        className={`cherry-blossom-video ${isReady ? 'video-ready' : ''}`}
         autoPlay
         loop
         muted
