@@ -11,7 +11,7 @@ const certifications = [
     hoverDescription: 'Managing Azure resources & infrastructure',
     date: 'February 2025',
     description: 'Certified in implementing, managing, and monitoring identity, governance, storage, compute, and virtual networks in a cloud environment.',
-    link: 'https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248',
+    link: 'https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248?ref=https%3A%2F%2Fwww.linkedin.com%2F',
   },
   {
     id: 2,
@@ -55,7 +55,7 @@ function CertificationCard({ cert, index, reducedMotion, isMobile }) {
           <h3 className="certification-title">
             Microsoft <span className="gradient-role">{cert.hoverTitle}</span>
           </h3>
-          <p className="certification-description">{cert.description}</p>
+          <span className="experience-date-pill">{cert.date}</span>
           <a href={cert.link} target="_blank" rel="noopener noreferrer" className="certification-link">
             <i className="fas fa-external-link-alt" /> View Certification
           </a>
@@ -116,20 +116,20 @@ function CertificationCard({ cert, index, reducedMotion, isMobile }) {
       <div className="certification-details">
         <motion.h3
           className="certification-title"
-          initial={{ opacity: 0, x: -20 }}
-          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          initial={{ opacity: 0, y: 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: index * 0.15 + 0.3, duration: 0.5 }}
         >
           Microsoft <span className="gradient-role">{cert.hoverTitle}</span>
         </motion.h3>
-        <motion.p
-          className="certification-description"
+        <motion.span
+          className="experience-date-pill"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ delay: index * 0.15 + 0.4, duration: 0.4 }}
         >
-          {cert.description}
-        </motion.p>
+          {cert.date}
+        </motion.span>
         <motion.a
           href={cert.link}
           target="_blank"
@@ -168,7 +168,7 @@ export default function Certifications() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: isMobile ? 0.3 : 0.6 }}
         >
-          Certifications
+          <span className="section-title-gradient">Certifications</span>
         </motion.h2>
 
         <div className="certifications-container">

@@ -26,13 +26,11 @@ export default function Navbar() {
 
       setIsScrolled(currentScrollY > 50);
 
-      // Hide navbar on scroll down, show on scroll up (mobile only)
-      if (isMobile) {
-        if (currentScrollY > lastScrollY && currentScrollY > 100) {
-          setIsHidden(true);
-        } else {
-          setIsHidden(false);
-        }
+      // Hide navbar on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
       }
 
       setLastScrollY(currentScrollY);

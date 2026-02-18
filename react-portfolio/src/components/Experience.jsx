@@ -9,7 +9,11 @@ const experiences = [
     company: 'Mastercard',
     date: 'Summer 2025',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
-    description: `During my internship at Mastercard, I developed an AI-powered incident management tool using Python and LLMs that automated data ingestion from Splunk and Remedy APIs, reducing mean time to triage by 40%. I also engineered ML detection algorithms to analyze over 100,000 log events, which improved anomaly detection accuracy by 25% while automating cloud infrastructure provisioning using Terraform and Jenkins CI/CD pipelines to accelerate deployment cycles by 40%.`,
+    bullets: [
+      '40% reduction in mean time to triage by building an AI-powered incident management tool with Python, LLMs, Splunk & Remedy APIs',
+      '25% improvement in anomaly detection accuracy by engineering ML algorithms across 100K+ log events',
+      '40% faster deployment cycles by automating cloud infrastructure provisioning with Terraform & Jenkins CI/CD',
+    ],
   },
   {
     id: 2,
@@ -17,7 +21,11 @@ const experiences = [
     company: 'Nutrify AI',
     date: 'Spring 2025',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
-    description: `At Nutrify AI, I led the technical architecture for an AI-powered nutrition app with an ML recommendation engine, building and deploying a conversational AI chatbot using FastAPI and OpenAI API integration. Through user validation with 15 interviews and 100+ surveys, the chatbot resulted in a 25% increase in app downloads. I optimized performance and implemented ML personalization features that improved user engagement by 45% and overall user activity by 30%.`,
+    bullets: [
+      '25% increase in app downloads by building a conversational AI chatbot with FastAPI & OpenAI, validated through 15 interviews and 100+ surveys',
+      '45% boost in user engagement by implementing ML-powered personalization features',
+      '30% lift in overall user activity by optimizing performance and leading technical architecture for the nutrition platform',
+    ],
   },
 ];
 
@@ -55,9 +63,13 @@ function ExperienceCard({ experience, index, reducedMotion, isMobile }) {
                 <span className="gradient-role">{experience.title}</span>
               </h3>
               <p className="experience-company">@ {experience.company}</p>
-              <p className="experience-date">{experience.date}</p>
+              <span className="experience-date-pill">{experience.date}</span>
             </div>
-            <p className="experience-paragraph">{experience.description}</p>
+            <ul className="experience-bullets">
+              {experience.bullets.map((bullet, i) => (
+                <li key={i} className="experience-bullet">{bullet}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </motion.div>
@@ -94,9 +106,13 @@ function ExperienceCard({ experience, index, reducedMotion, isMobile }) {
               <span className="gradient-role">{experience.title}</span>
             </h3>
             <p className="experience-company">@ {experience.company}</p>
-            <p className="experience-date">{experience.date}</p>
+            <span className="experience-date-pill">{experience.date}</span>
           </div>
-          <p className="experience-paragraph">{experience.description}</p>
+          <ul className="experience-bullets">
+            {experience.bullets.map((bullet, i) => (
+              <li key={i} className="experience-bullet">{bullet}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </motion.div>
@@ -124,7 +140,7 @@ export default function Experience() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: isMobile ? 0.3 : 0.6 }}
         >
-          Experience
+          <span className="section-title-gradient">Experience</span>
         </motion.h2>
 
         <div className="experience-cards">

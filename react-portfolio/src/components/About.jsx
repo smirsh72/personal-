@@ -240,6 +240,14 @@ export default function About() {
   return (
     <section id="about" className="modern-section about-section" ref={sectionRef}>
       <div className="container">
+        <motion.h2
+          className="section-subtitle text-center"
+          initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: isMobile ? 0.3 : 0.6 }}
+        >
+          <span className="section-title-gradient">About Me</span>
+        </motion.h2>
         <motion.div
           className="about-grid"
           variants={containerVariants}

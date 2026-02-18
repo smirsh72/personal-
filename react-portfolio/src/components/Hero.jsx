@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import CherryBlossomBackground from './CherryBlossomBackground';
 
 // Check if mobile on initial render (SSR-safe)
 const getInitialMobile = () => {
@@ -167,6 +168,7 @@ export default function Hero() {
   if (isMobile) {
     return (
       <section id="hero" className="hero">
+        <CherryBlossomBackground reducedMotion={reducedMotion} />
         <EtherealHorizon reducedMotion={reducedMotion} isMobile={true} />
         <div className="content">
           <div className="intro-sequence">
@@ -217,6 +219,7 @@ export default function Hero() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
+      <CherryBlossomBackground reducedMotion={reducedMotion} />
       <EtherealHorizon reducedMotion={reducedMotion} isMobile={false} />
       <motion.div
         className="content"
