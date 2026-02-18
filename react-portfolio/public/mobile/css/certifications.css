@@ -8,7 +8,7 @@
 }
 
 [data-theme="dark"] .certifications-section {
-    background-color: var(--dark-bg-primary, #121212);
+    background-color: var(--bg-primary, #1a1225);
 }
 
 .certifications-section::before {
@@ -51,9 +51,9 @@
 }
 
 [data-theme="dark"] .certification-card {
-    background-color: var(--dark-card-bg, rgba(30, 30, 30, 0.7));
-    border-color: var(--dark-border-color, rgba(75, 85, 99, 0.2));
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg, #241a35);
+    border-color: var(--border-color, rgba(120, 80, 150, 0.25));
+    box-shadow: 0 4px 6px -1px rgba(15, 8, 25, 0.4), 0 2px 4px -1px rgba(15, 8, 25, 0.2);
 }
 
 .certification-card:hover {
