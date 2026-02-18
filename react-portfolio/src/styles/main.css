@@ -1504,6 +1504,17 @@ body {
     width: 140px;
     height: 140px;
   }
+
+  .profile-image-wrapper::before {
+    animation: none;
+    filter: blur(30px);
+    opacity: 0.2;
+  }
+
+  .profile-image {
+    will-change: auto;
+    transform: translateZ(0);
+  }
 }
 
 @media (max-width: 480px) {

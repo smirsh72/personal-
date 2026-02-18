@@ -252,6 +252,9 @@ export default function About() {
                   src="/images/profile-pic.jpg"
                   alt="Shan Irshad"
                   className="profile-image"
+                  loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
                 />
               </div>
               <div className="about-content">
