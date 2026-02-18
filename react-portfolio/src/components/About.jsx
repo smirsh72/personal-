@@ -237,14 +237,75 @@ export default function About() {
     },
   };
 
+  // Mobile: zero motion wrappers — render plain HTML instantly
+  if (isMobile) {
+    return (
+      <section id="about" className="modern-section about-section" ref={sectionRef}>
+        <div className="container">
+          <h2 className="section-subtitle text-center">
+            <span className="section-title-gradient">About Me</span>
+          </h2>
+          <div className="about-grid">
+            <div className="about-left-column">
+              <div className="profile-image-wrapper">
+                <img
+                  src="/images/profile-pic.jpg"
+                  alt="Shan Irshad"
+                  className="profile-image"
+                />
+              </div>
+              <div className="about-content">
+                <div className="about-text">
+                  <p className="intro-paragraph">
+                    Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product enthusiast who builds software that solves real problems.
+                  </p>
+                  <p className="secondary-paragraph">
+                    I focus on <span className="gradient-text highlight-text">AI</span> and <span className="gradient-text highlight-text">cloud systems</span>, turning complex ideas into products people can actually use. My main project, <span className="gradient-text highlight-text">Ghosted</span>, lets you deploy cloud infrastructure using plain English.
+                  </p>
+                  <p className="secondary-paragraph">
+                    When I'm not coding, you'll find me cheering on Liverpool FC or at the gym.
+                  </p>
+                </div>
+                <div className="exploring-section">
+                  <h3 className="exploring-title">Currently Building Toward</h3>
+                  <div className="exploring-tags">
+                    <ExploringTag delay={0} reducedMotion={true}>AI</ExploringTag>
+                    <ExploringTag delay={0} reducedMotion={true}>AI-Powered Cloud Automation</ExploringTag>
+                    <ExploringTag delay={0} reducedMotion={true}>Product Roadmapping</ExploringTag>
+                  </div>
+                </div>
+                <p className="ai-prompt">
+                  For anything else, feel free to ask my AI <span className="emoji"></span>
+                </p>
+                <div className="social-icons-container">
+                  <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0} reducedMotion={true} />
+                  <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0} reducedMotion={true} />
+                  <SocialIcon href="tel:+14695449186" icon="fas fa-phone-alt" label="Phone" delay={0} reducedMotion={true} />
+                </div>
+              </div>
+            </div>
+            <div className="about-right-column">
+              <div className="ai-status-badge">
+                <span className="status-dot" />
+                <span className="status-text">Shan.ai Online</span>
+              </div>
+              <AIChat reducedMotion={true} />
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop: full animations
   return (
     <section id="about" className="modern-section about-section" ref={sectionRef}>
       <div className="container">
         <motion.h2
           className="section-subtitle text-center"
-          initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: isMobile ? 0.3 : 0.6 }}
+          transition={{ duration: 0.6 }}
         >
           <span className="section-title-gradient">About Me</span>
         </motion.h2>
@@ -258,16 +319,16 @@ export default function About() {
           <motion.div className="about-left-column" variants={itemVariants}>
             <motion.div
               className="profile-image-wrapper"
-              whileHover={reducedMotion ? {} : { scale: 1.02 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
               <motion.img
                 src="/images/profile-pic.jpg"
                 alt="Shan Irshad"
                 className="profile-image"
-                initial={{ opacity: 0, scale: reducedMotion ? 1 : 0.9 }}
+                initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: reducedMotion ? 0.1 : 0.8, ease: 'easeOut' }}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
               />
             </motion.div>
 
@@ -309,9 +370,9 @@ export default function About() {
           <motion.div className="about-right-column" variants={itemVariants}>
             <motion.div
               className="ai-status-badge"
-              initial={{ opacity: 0, x: reducedMotion ? 0 : -20 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: reducedMotion ? 0 : 0.5, duration: 0.4 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
             >
               <motion.span
                 className="status-dot"

@@ -1,19 +1,21 @@
 /**
  * CherryBlossomBackground — Fullscreen looping video background
  *
- * The video is a real cherry blossom tree with petals falling (Pexels, free license).
- * It covers the entire hero section via object-fit: cover.
+ * Desktop: real cherry blossom video with petals falling.
+ * Mobile: static CSS gradient (no video download) for instant load.
  *
  * Props:
- *   reducedMotion (boolean) — if true, video is paused on first frame (still image fallback)
+ *   reducedMotion (boolean) — if true, video is paused on first frame
+ *   isMobile (boolean) — if true, skip video entirely
  */
 import { useRef, useEffect, useState } from 'react';
 
-export default function CherryBlossomBackground({ reducedMotion = false }) {
+export default function CherryBlossomBackground({ reducedMotion = false, isMobile = false }) {
   const videoRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    if (isMobile) return;
     const video = videoRef.current;
     if (!video) return;
 
@@ -28,7 +30,16 @@ export default function CherryBlossomBackground({ reducedMotion = false }) {
       video.addEventListener('canplaythrough', handleReady, { once: true });
       return () => video.removeEventListener('canplaythrough', handleReady);
     }
-  }, [reducedMotion]);
+  }, [reducedMotion, isMobile]);
+
+  if (isMobile) {
+    return (
+      <div className="cherry-blossom-bg">
+        <div className="cherry-blossom-static" />
+        <div className="cherry-blossom-overlay" />
+      </div>
+    );
+  }
 
   return (
     <div className="cherry-blossom-bg">
@@ -46,7 +57,6 @@ export default function CherryBlossomBackground({ reducedMotion = false }) {
       >
         <source src="/cherry-blossom.mp4" type="video/mp4" />
       </video>
-      {/* Soft overlay to ensure text readability */}
       <div className="cherry-blossom-overlay" />
     </div>
   );

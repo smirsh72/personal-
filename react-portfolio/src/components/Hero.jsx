@@ -168,7 +168,7 @@ export default function Hero() {
   if (isMobile) {
     return (
       <section id="hero" className="hero">
-        <CherryBlossomBackground reducedMotion={reducedMotion} />
+        <CherryBlossomBackground reducedMotion={reducedMotion} isMobile={true} />
         <EtherealHorizon reducedMotion={reducedMotion} isMobile={true} />
         <div className="content">
           <div className="intro-sequence">
