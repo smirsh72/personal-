@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script>
-        // Force light mode on initial load
-        localStorage.setItem('theme', 'light');
-        document.documentElement.setAttribute('data-theme', 'light');
-    </script>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Shan Irshad - Portfolio</title>
     <!-- Mobile Chrome-Optimized Favicon Configuration -->
@@ -124,6 +119,7 @@
     <!-- About Me Section -->
     <section id="about" class="modern-section about-section">
         <div class="container">
+            <h2 class="section-subtitle text-center"><span class="section-title-gradient">About Me</span></h2>
             <div class="about-grid">
                 <div class="about-left-column reveal-element" data-delay="100">
                     <div class="profile-image-wrapper">
@@ -196,7 +192,7 @@
     <!-- Experience Section -->
     <section id="experience" class="modern-section experience-section">
         <div class="container">
-            <h2 class="section-subtitle text-center">Experience</h2>
+            <h2 class="section-subtitle text-center"><span class="section-title-gradient">Experience</span></h2>
             
             <div class="experience-cards">
                 <!-- Mastercard Experience Card -->
@@ -209,13 +205,15 @@
                         </div>
                         <div class="experience-details">
                             <div class="experience-header">
-                                <h3 class="experience-title"><span class="gradient-role">Site Reliability Engineer Intern</span></h3>
+                                <h3 class="experience-title"><span class="gradient-role">Site Reliability Engineer</span></h3>
                                 <p class="experience-company">@ Mastercard</p>
-                                <p class="experience-date">Summer 2025</p>
+                                <span class="experience-date-pill">Summer 2025</span>
                             </div>
-                            <p class="experience-paragraph">
-                                During my internship at Mastercard, I developed an AI-powered incident management tool using Python and LLMs that automated data ingestion from Splunk and Remedy APIs, reducing mean time to triage by 40%. I also engineered ML detection algorithms to analyze over 100,000 log events, which improved anomaly detection accuracy by 25% while automating cloud infrastructure provisioning using Terraform and Jenkins CI/CD pipelines to accelerate deployment cycles by 40%.
-                            </p>
+                            <ul class="experience-bullets">
+                                <li class="experience-bullet">40% reduction in mean time to triage by building an AI-powered incident management tool with Python, LLMs, Splunk & Remedy APIs</li>
+                                <li class="experience-bullet">25% improvement in anomaly detection accuracy by engineering ML algorithms across 100K+ log events</li>
+                                <li class="experience-bullet">40% faster deployment cycles by automating cloud infrastructure provisioning with Terraform & Jenkins CI/CD</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -230,13 +228,15 @@
                         </div>
                         <div class="experience-details">
                             <div class="experience-header">
-                                <h3 class="experience-title"><span class="gradient-role">Technical Product Manager</span></h3>
+                                <h3 class="experience-title"><span class="gradient-role">Product Manager</span></h3>
                                 <p class="experience-company">@ Nutrify AI</p>
-                                <p class="experience-date">Spring 2025</p>
+                                <span class="experience-date-pill">Spring 2025</span>
                             </div>
-                            <p class="experience-paragraph">
-                                At Nutrify AI, I led the technical architecture for an AI-powered nutrition app with an ML recommendation engine, building and deploying a conversational AI chatbot using FastAPI and OpenAI API integration. Through user validation with 15 interviews and 100+ surveys, the chatbot resulted in a 25% increase in app downloads. I optimized performance and implemented ML personalization features that improved user engagement by 45% and overall user activity by 30%.
-                            </p>
+                            <ul class="experience-bullets">
+                                <li class="experience-bullet">25% increase in app downloads by building a conversational AI chatbot with FastAPI & OpenAI, validated through 15 interviews and 100+ surveys</li>
+                                <li class="experience-bullet">45% boost in user engagement by implementing ML-powered personalization features</li>
+                                <li class="experience-bullet">30% lift in overall user activity by optimizing performance and leading technical architecture for the nutrition platform</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -247,7 +247,7 @@
     <!-- Certifications Section -->
     <section id="certifications" class="modern-section certifications-section">
         <div class="container">
-            <h2 class="section-subtitle text-center">Certifications</h2>
+            <h2 class="section-subtitle text-center"><span class="section-title-gradient">Certifications</span></h2>
             
             <div class="certifications-container">
                 <!-- Azure Administrator Certification -->
@@ -262,8 +262,8 @@
                     </div>
                     <div class="certification-details">
                         <h3 class="certification-title">Microsoft <span class="gradient-role">Azure Administrator</span></h3>
-                        <p class="certification-description">Certified in implementing, managing, and monitoring identity, governance, storage, compute, and virtual networks in a cloud environment.</p>
-                        <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248" target="_blank" class="certification-link"><i class="fas fa-external-link-alt"></i> View Certification</a>
+                        <span class="experience-date-pill">February 2025</span>
+                        <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="certification-link"><i class="fas fa-external-link-alt"></i> View Certification</a>
                     </div>
                 </div>
                 
@@ -279,7 +279,7 @@
                     </div>
                     <div class="certification-details">
                         <h3 class="certification-title">Microsoft <span class="gradient-role">Azure Fundamentals</span></h3>
-                        <p class="certification-description">Certified in cloud concepts, Azure services, Azure workloads, security and privacy in Azure, and Azure pricing and support.</p>
+                        <span class="experience-date-pill">July 2024</span>
                         <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/492a6cf91ff5ff73" target="_blank" class="certification-link"><i class="fas fa-external-link-alt"></i> View Certification</a>
                     </div>
                 </div>

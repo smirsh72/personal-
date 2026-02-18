@@ -1,31 +1,31 @@
 /* CSS Variables */
 :root[data-theme="dark"] {
-    /* Dark Mode Colors */
-    --bg-primary: #121212;
-    --bg-secondary: #121212;
+    /* Dark Mode Colors — warm purple to match desktop */
+    --bg-primary: #1a1225;
+    --bg-secondary: #1f1530;
     --text-primary: #e2e8f0;
     --text-secondary: #a0aec0;
-    --accent-white: #121212;
-    --accent-silver: #4a5568;
+    --accent-white: #1a1225;
+    --accent-silver: #5a4a6a;
     --glow-white: rgba(255, 255, 255, 0.15);
     --glow-subtle: rgba(99, 102, 241, 0.2);
-    --about-bg: #121212;
-    --experience-bg: #121212;
-    --card-bg-dark: #1e1e24;
-    --border-dark: rgba(75, 85, 99, 0.4);
-    --card-shadow-dark: rgba(0, 0, 0, 0.3);
+    --about-bg: #1a1225;
+    --experience-bg: #1a1225;
+    --card-bg-dark: #241a35;
+    --border-dark: rgba(120, 80, 150, 0.25);
+    --card-shadow-dark: rgba(15, 8, 25, 0.4);
     --text-gray-800-dark: #e2e8f0;
     --text-gray-500-dark: #94a3b8;
     --glow-lavender: rgba(139, 92, 246, 0.3);
-    --card-bg: #1e1e24;
-    --card-shadow: rgba(0, 0, 0, 0.3);
-    --border-color: rgba(75, 85, 99, 0.3);
-    --navbar-bg: rgba(18, 18, 18, 0.8);
-    --chat-bg: #121212;
-    --chat-message-bg: #1e1e24;
+    --card-bg: #241a35;
+    --card-shadow: rgba(15, 8, 25, 0.4);
+    --border-color: rgba(120, 80, 150, 0.25);
+    --navbar-bg: rgba(26, 18, 37, 0.9);
+    --chat-bg: #1a1225;
+    --chat-message-bg: #241a35;
     --chat-message-color: #e2e8f0;
     --chat-message-border: #ec4899;
-    --loading-screen-bg: linear-gradient(135deg, #121212 0%, #121212 100%);
+    --loading-screen-bg: linear-gradient(135deg, #1a1225 0%, #1f1530 100%);
 }
 
 /* Light Mode (Default) */
@@ -2295,4 +2295,115 @@ body {
     .about-text {
         font-size: 1rem;
     }
+}
+
+/* ============================================
+   Desktop-Consistent Styles
+   ============================================ */
+
+/* Gradient Section Header */
+.section-title-gradient {
+    background: linear-gradient(90deg, #d946ef 0%, #ec4899 50%, #f97316 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .section-title-gradient {
+    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Experience Card — left border accent */
+.experience-card {
+    border-left: 4px solid #ec4899;
+}
+
+/* Experience Date Pill */
+.experience-date-pill {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #ec4899;
+    background: rgba(236, 72, 153, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    margin-top: 0.5rem;
+}
+
+[data-theme="dark"] .experience-date-pill {
+    background: rgba(236, 72, 153, 0.15);
+    color: #f9a8d4;
+}
+
+/* Experience Bullets */
+.experience-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.experience-bullet {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding-left: 1.25rem;
+    position: relative;
+}
+
+.experience-bullet::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d946ef, #ec4899);
+}
+
+/* Certification Card — left border + centered layout */
+.certification-card {
+    border-left: 4px solid #ec4899;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.certification-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.certification-link {
+    margin-top: 0.5rem;
+}
+
+/* Dark mode — gradient text to light lavender */
+[data-theme="dark"] .gradient-role {
+    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .gradient-text.highlight-text {
+    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme="dark"] .site-name {
+    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
