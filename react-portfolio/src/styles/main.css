@@ -1462,6 +1462,14 @@ body {
     padding: 0.4rem 0.8rem;
   }
 
+  .content {
+    padding-bottom: 0;
+  }
+
+  .scroll-indicator {
+    bottom: 5rem;
+  }
+
   .hero-text {
     font-size: clamp(2rem, 6vw, 3rem);
   }

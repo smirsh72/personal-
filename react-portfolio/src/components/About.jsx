@@ -237,22 +237,10 @@ export default function About() {
     },
   };
 
-  // Mobile: lightweight CSS fade-in via IntersectionObserver (no Framer Motion)
-  const [mobileVisible, setMobileVisible] = useState(false);
-  useEffect(() => {
-    if (!isMobile || !sectionRef.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setMobileVisible(true); },
-      { rootMargin: '300px 0px' }
-    );
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, [isMobile]);
-
   if (isMobile) {
     return (
       <section id="about" className="modern-section about-section" ref={sectionRef}>
-        <div className={`container mobile-fade ${mobileVisible ? 'mobile-visible' : ''}`}>
+        <div className="container">
           <h2 className="section-subtitle text-center">
             <span className="section-title-gradient">About Me</span>
           </h2>
