@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shan Irshad - Portfolio</title>
 
+    <!-- Mobile redirect — serve static site on mobile, React on desktop -->
+    <script>
+      if (window.innerWidth <= 768 && !window.location.pathname.startsWith('/mobile')) {
+        window.location.replace('/mobile/index.html');
+      }
+    </script>
+
     <!-- Force scroll to top before anything loads -->
     <script>
       if (window.location.hash) {
