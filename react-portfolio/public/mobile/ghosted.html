@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghosted AI | Shan Irshad</title>
+    <!-- Favicon - larger sizes -->
+    <link rel="icon" type="image/jpeg" href="favicon/favicon.jpeg" sizes="192x192">
+    <link rel="icon" type="image/jpeg" href="favicon/favicon.jpeg" sizes="512x512">
+    <link rel="apple-touch-icon" href="favicon/favicon.jpeg" sizes="180x180">
+    <meta name="msapplication-TileImage" content="favicon/favicon.jpeg">
+    <meta name="msapplication-TileColor" content="#000000">
+    <link rel="stylesheet" href="css/ghosted-style.css">
+    <!-- Google Fonts - Monospace font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="ghosted-container">
+        <!-- Logo -->
+        <div class="logo-container">
+            <img src="images/ghosted-logo.png" alt="Ghosted Logo" class="ghosted-logo">
+        </div>
+        
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+            <div class="prompt">ghosted~$ <span class="typed-text">hi</span></div>
+        </div>
+        
+        <!-- Terminal Response -->
+        <div class="terminal-response">
+            <p>Hello! I'm Ghosted, your cloud AI tool for all things AWS. How can I help you today?</p>
+        </div>
+        
+        <!-- Terminal Input -->
+        <div class="terminal-input">
+            <div class="prompt">ghosted~$ <span class="typed-text" id="deploy-command">deploy a t2.micro instance in us-east-1 with ubuntu</span></div>
+        </div>
+        
+        <!-- Terminal Response for Deployment -->
+        <div class="terminal-deployment" id="deployment-response">
+            <p class="response-line">Analyzing request...</p>
+            <p class="response-line">Identified parameters:</p>
+            <p class="response-line indent">- Instance type: <span class="highlight">t2.micro</span></p>
+            <p class="response-line indent">- Region: <span class="highlight">us-east-1</span> (N. Virginia)</p>
+            <p class="response-line indent">- OS: <span class="highlight">Ubuntu</span> 22.04 LTS</p>
+            <p class="response-line">Initiating deployment...</p>
+            <p class="response-line success">✓ Created security group with SSH access</p>
+            <p class="response-line success">✓ Generated new key pair 'ghosted-demo-key'</p>
+            <p class="response-line success">✓ Launched EC2 instance</p>
+            <p class="response-line">Instance is now <span class="status-running">RUNNING</span></p>
+            <p class="response-line">Instance ID: <span class="instance-id">i-0abc12345def67890</span></p>
+            <p class="response-line">Public IP: <span class="ip-address">54.165.xx.xx</span></p>
+            <p class="response-line">SSH command: <span class="command">ssh -i ghosted-demo-key.pem ubuntu@54.165.xx.xx</span></p>
+            <p class="response-line final">Deployment completed in 47 seconds</p>
+        </div>
+        
+        <!-- Project Description -->
+        <div class="project-description">
+            <h2>About Ghosted</h2>
+            <p>Ghosted is a full-stack, AI-native cloud automation platform I built to simplify AWS resource management through natural language. The frontend is developed with React and TypeScript, styled using Material-UI with terminal-inspired animations and responsive design. The backend is powered by FastAPI and Python, with an AI orchestration layer that integrates OpenAI's GPT-4o via AsyncOpenAI, enabling advanced intent recognition, command extraction, and workload-specific AWS provisioning.</p>
+            <p>Users can manage EC2 instances and S3 buckets without using the AWS console or CLI — just by chatting. The backend services handle IAM-based authentication with STS and secure external ID flows, while the memory system tracks conversation history and pending confirmations. Ghosted supports Docker containerization, CI/CD pipelines via Netlify (frontend) and Render (backend), and includes structured logging, error handling, and rate limiting. Terraform is integrated for IaC, and all environment variables are securely managed.</p>
+            <p>With Ghosted, I built not just an AI chatbot — but a secure, production-grade system that turns complex DevOps workflows into conversational actions.</p>
+        </div>
+        
+        <!-- Tech Stack -->
+        <div class="tech-stack">
+            <div class="tech-badge">React</div>
+            <div class="tech-badge">TypeScript</div>
+            <div class="tech-badge">Material-UI</div>
+            <div class="tech-badge">FastAPI</div>
+            <div class="tech-badge">Python</div>
+            <div class="tech-badge">GPT-4o</div>
+            <div class="tech-badge">AsyncOpenAI</div>
+            <div class="tech-badge">AWS SDK</div>
+            <div class="tech-badge">STS</div>
+            <div class="tech-badge">Docker</div>
+            <div class="tech-badge">Netlify</div>
+            <div class="tech-badge">Render</div>
+            <div class="tech-badge">Terraform</div>
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="cta-container">
+            <a href="https://ghostedai.net" target="_blank" class="cta-button">
+                Launch Ghosted <span class="arrow">→</span>
+            </a>
+        </div>
+        
+        <!-- Back to Portfolio Link -->
+        <div class="back-link">
+            <a href="index.html?skipLoading=true#hero">← Back to Portfolio</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/ghosted-script.js"></script>
+    <script src="js/ghosted-back-nav.js"></script>
+    <script src="js/ghosted-arrival.js"></script>
+</body>
+</html>

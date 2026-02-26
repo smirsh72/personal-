@@ -1,0 +1,212 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // DOM Elements
+  const loadingScreen = document.querySelector('.loading-screen');
+  const hero = document.querySelector('.hero');
+  const greeting = document.querySelector('#greeting');
+  const nameDisplay = document.querySelector('#name-display');
+  const tagline = document.querySelector('#tagline-text');
+  const ctaButton = document.querySelector('#cta-button');
+  const cursor = document.querySelector('#cursor');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  const particlesContainer = document.querySelector('.particles-container');
+  
+  // Configuration
+  const nameText = "I'm Shan Irshad";
+  const typingDelay = 70; // ms per letter
+  const greetingDelay = 800; // ms before greeting appears
+  const nameDelay = 800; // ms after greeting before name starts typing
+  const cursorFadeDelay = 400; // ms after typing completes
+  const taglineFadeDelay = 250; // ms after cursor fades
+  const buttonFadeDelay = 200; // ms after tagline appears
+  const scrollIndicatorDelay = 150; // ms after button appears
+  const loadingDuration = 1800; // ms for loading screen
+  
+  // Initialize
+  initializeLoadingAnimation();
+  
+  // Loading Animation
+  function initializeLoadingAnimation() {
+    // Start the loading animation
+    setTimeout(() => {
+      // Hide loading screen
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+        // Show hero section
+        hero.style.opacity = '1';
+        
+        // Start staggered animation sequence
+        setTimeout(() => {
+          // First show greeting with smooth upward animation
+          greeting.style.opacity = '1';
+          greeting.style.transform = 'translateY(0)';
+          
+          // After delay, start typing name
+          setTimeout(() => {
+            typeText();
+          }, nameDelay);
+        }, greetingDelay);
+      }, 500);
+    }, loadingDuration);
+    
+    // Create particles
+    createParticles();
+    
+    // Add event listener for mouse movement
+    document.addEventListener('mousemove', createShimmerOnMove);
+    
+    // Add smooth scroll behavior
+    setupSmoothScroll();
+    
+    // Adjust font size based on viewport width
+    adjustFontSize();
+    window.addEventListener('resize', adjustFontSize);
+  }
+  
+  // Type text letter by letter
+  function typeText() {
+    let charIndex = 0;
+    nameDisplay.innerHTML = '';
+    
+    const typeInterval = setInterval(() => {
+      if (charIndex < nameText.length) {
+        const letter = document.createElement('span');
+        letter.className = 'letter';
+        letter.textContent = nameText.charAt(charIndex);
+        nameDisplay.appendChild(letter);
+        
+        // Fade in the letter with slight delay based on position
+        setTimeout(() => {
+          letter.style.opacity = '1';
+          letter.style.transform = 'translateY(0)';
+        }, 10);
+        
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+        // Show cursor briefly then fade out
+        cursor.style.opacity = '1';
+        setTimeout(() => {
+          // Fade out cursor smoothly
+          cursor.style.opacity = '0';
+          
+          // Fade in tagline after cursor fades with upward animation
+          setTimeout(() => {
+            tagline.style.opacity = '1';
+            tagline.style.transform = 'translateY(0)';
+            
+            // Fade in button after tagline with subtle animation
+            setTimeout(() => {
+              ctaButton.style.opacity = '1';
+              ctaButton.style.transform = 'translateY(0)';
+              
+              // Show scroll indicator last with gentle fade
+              setTimeout(() => {
+                scrollIndicator.style.opacity = '0.6';
+              }, scrollIndicatorDelay);
+            }, buttonFadeDelay);
+          }, taglineFadeDelay);
+        }, cursorFadeDelay);
+      }
+    }, typingDelay);
+  }
+  
+  // Create floating particles
+  function createParticles() {
+    const particleCount = 15;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random size between 2-4px
+      const size = Math.random() * 2 + 2;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      
+      // Random position
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`;
+      
+      // Random opacity
+      particle.style.opacity = `${Math.random() * 0.2 + 0.1}`;
+      
+      // Random animation duration
+      const duration = Math.random() * 25 + 15;
+      particle.style.animationDuration = `${duration}s`;
+      
+      // Random animation delay
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      
+      particlesContainer.appendChild(particle);
+    }
+  }
+  
+  // Create shimmer effect on mouse move
+  function createShimmerOnMove(e) {
+    // Limit the frequency of shimmer creation
+    if (Math.random() > 0.08) return;
+    
+    const shimmer = document.createElement('div');
+    shimmer.className = 'shimmer';
+    
+    // Position at mouse coordinates
+    shimmer.style.left = `${e.clientX}px`;
+    shimmer.style.top = `${e.clientY}px`;
+    
+    // Random size
+    const size = Math.random() * 2 + 1.5;
+    shimmer.style.width = `${size}px`;
+    shimmer.style.height = `${size}px`;
+    
+    // Add to container
+    particlesContainer.appendChild(shimmer);
+    
+    // Remove after animation completes
+    setTimeout(() => {
+      shimmer.remove();
+    }, 800);
+  }
+  
+  // Adjust font size based on viewport width
+  function adjustFontSize() {
+    const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+    
+    if (vw < 480) {
+      nameDisplay.style.fontSize = '10rem';
+      tagline.style.fontSize = '1rem';
+    } else if (vw < 768) {
+      nameDisplay.style.fontSize = '15rem';
+      tagline.style.fontSize = '1.1rem';
+    } else {
+      nameDisplay.style.fontSize = '20rem';
+      tagline.style.fontSize = '1.3rem';
+    }
+  }
+  
+  // Setup smooth scroll behavior
+  function setupSmoothScroll() {
+    // For the CTA button and scroll indicator
+    ctaButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Scroll to next section or about section
+      const aboutSection = document.querySelector('#about') || document.querySelector('section:nth-of-type(2)');
+      if (aboutSection) {
+        aboutSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+    
+    scrollIndicator.addEventListener('click', () => {
+      const nextSection = document.querySelector('section:nth-of-type(2)');
+      if (nextSection) {
+        nextSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollBy({ 
+          top: window.innerHeight, 
+          behavior: 'smooth' 
+        });
+      }
+    });
+  }
+});
