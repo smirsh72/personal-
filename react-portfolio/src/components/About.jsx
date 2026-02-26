@@ -265,7 +265,7 @@ export default function About() {
                     I focus on <span className="gradient-text highlight-text">AI</span> and <span className="gradient-text highlight-text">cloud systems</span>, turning complex ideas into products people can actually use. My main project, <span className="gradient-text highlight-text">Ghosted</span>, lets you deploy cloud infrastructure using plain English.
                   </p>
                   <p className="secondary-paragraph">
-                    When I'm not coding, you'll find me cheering on Liverpool FC or at the gym.
+                    Beyond the screen, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
                   </p>
                 </div>
                 <div className="exploring-section">
@@ -343,7 +343,7 @@ export default function About() {
                   I focus on <span className="gradient-text highlight-text">AI</span> and <span className="gradient-text highlight-text">cloud systems</span>, turning complex ideas into products people can actually use. My main project, <span className="gradient-text highlight-text">Ghosted</span>, lets you deploy cloud infrastructure using plain English.
                 </motion.p>
                 <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  When I'm not coding, you'll find me cheering on Liverpool FC or at the gym.
+                  Beyond the screen, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
                 </motion.p>
               </motion.div>
 
