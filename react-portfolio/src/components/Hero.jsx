@@ -86,11 +86,9 @@ function EtherealHorizon({ reducedMotion, isMobile }) {
 function WordCarousel({ reducedMotion, isMobile }) {
   const words = useMemo(() => [
     'Shan Irshad',
-    'An Innovator',
-    'A Builder',
-    'A Cloud Engineer',
     'A Product Manager',
-    'An AI Engineer'
+    'A Product Engineer',
+    'A Founder'
   ], []);
 
   const [currentIndex, setCurrentIndex] = useState(0);
