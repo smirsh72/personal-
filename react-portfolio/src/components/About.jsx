@@ -162,11 +162,8 @@ function SocialIcon({ href, icon, label, delay, reducedMotion }) {
       initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: reducedMotion ? 0 : delay, duration: 0.4 }}
-      whileHover={reducedMotion ? {} : {
-        y: -3,
-        color: '#f472b6',
-        textShadow: '0 0 8px rgba(244, 114, 182, 0.6)',
-      }}
+      whileHover={reducedMotion ? {} : { scale: 1.2 }}
+      whileTap={reducedMotion ? {} : { scale: 0.9 }}
     >
       <i className={icon} />
     </motion.a>
@@ -181,10 +178,8 @@ function ExploringTag({ children, delay, reducedMotion }) {
       initial={{ opacity: 0, scale: reducedMotion ? 1 : 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: reducedMotion ? 0 : delay, duration: 0.4 }}
-      whileHover={reducedMotion ? {} : {
-        y: -2,
-        boxShadow: '0 4px 6px rgba(244, 114, 182, 0.15)',
-      }}
+      whileHover={reducedMotion ? {} : { scale: 1.04 }}
+      whileTap={reducedMotion ? {} : { scale: 0.97 }}
     >
       {children}
     </motion.span>
@@ -271,9 +266,7 @@ export default function About() {
                 <div className="exploring-section">
                   <h3 className="exploring-title">Currently Building Toward</h3>
                   <div className="exploring-tags">
-                    <ExploringTag delay={0} reducedMotion={true}>AI</ExploringTag>
-                    <ExploringTag delay={0} reducedMotion={true}>AI-Powered Cloud Automation</ExploringTag>
-                    <ExploringTag delay={0} reducedMotion={true}>Product Roadmapping</ExploringTag>
+                    <ExploringTag delay={0} reducedMotion={true}>💰 FinOps & API Optimization</ExploringTag>
                   </div>
                 </div>
                 <p className="ai-prompt">
@@ -350,9 +343,7 @@ export default function About() {
               <motion.div className="exploring-section" variants={itemVariants}>
                 <h3 className="exploring-title">Currently Building Toward</h3>
                 <div className="exploring-tags">
-                  <ExploringTag delay={0.3} reducedMotion={reducedMotion}>AI</ExploringTag>
-                  <ExploringTag delay={0.4} reducedMotion={reducedMotion}>AI-Powered Cloud Automation</ExploringTag>
-                  <ExploringTag delay={0.5} reducedMotion={reducedMotion}>Product Roadmapping</ExploringTag>
+                  <ExploringTag delay={0.3} reducedMotion={reducedMotion}>💰 FinOps & API Optimization</ExploringTag>
                 </div>
               </motion.div>
 
