@@ -925,6 +925,7 @@ body {
   flex-direction: column;
   height: 100%;
   border: 1px solid rgba(244, 114, 182, 0.15);
+
   max-height: 460px;
   width: 100%;
   transition: all 0.4s ease;
@@ -933,6 +934,7 @@ body {
 [data-theme="dark"] .ai-chat-container {
   background: #1a1225;
   border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
 .chat-header {
@@ -1005,7 +1007,7 @@ body {
 }
 
 [data-theme="dark"] .assistant-message {
-  border: 1px solid #ec4899;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .message-content {
@@ -1056,6 +1058,20 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .send-button {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+[data-theme="dark"] .send-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme="dark"] .user-message {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
 }
 
 /* Typing Indicator */
@@ -1150,6 +1166,10 @@ body {
   overflow: hidden;
 }
 
+[data-theme="dark"] .experience-card {
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
 .experience-card-content {
   display: flex;
   padding: 2rem;
@@ -1234,8 +1254,8 @@ body {
 }
 
 [data-theme="dark"] .experience-date-pill {
-  background: rgba(236, 72, 153, 0.15);
-  color: #f9a8d4;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .experience-paragraph {
@@ -1328,6 +1348,18 @@ body {
   align-items: center;
   text-align: center;
   padding: 2.5rem 2rem;
+}
+
+[data-theme="dark"] .certification-card {
+  border-left-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .certification-link {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .certification-link:hover {
+  color: white;
 }
 
 .certification-badge-container {
