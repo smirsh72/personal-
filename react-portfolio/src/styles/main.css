@@ -932,7 +932,7 @@ body {
 
 [data-theme="dark"] .ai-chat-container {
   background: #1a1225;
-  border-color: #ec4899;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .chat-header {
@@ -1034,13 +1034,13 @@ body {
 [data-theme="dark"] .chat-input {
   background-color: #1a1225;
   color: #e2e8f0;
-  border-color: #ec4899;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .chat-input:focus {
   outline: none;
-  border-color: #8b5cf6;
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
 }
 
 .send-button {
