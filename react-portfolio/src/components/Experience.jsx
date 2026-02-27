@@ -96,11 +96,7 @@ function ExperienceCard({ experience, index, reducedMotion, isMobile }) {
             <p className="experience-company">@ {experience.company}</p>
             <span className="experience-date-pill">{experience.date}</span>
           </div>
-          <ul className="experience-bullets">
-            {experience.bullets.map((bullet, i) => (
-              <li key={i} className="experience-bullet">{bullet}</li>
-            ))}
-          </ul>
+          <p className="experience-description">{experience.description}</p>
         </div>
       </div>
     </motion.div>
