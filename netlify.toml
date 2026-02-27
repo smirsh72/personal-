@@ -3,6 +3,9 @@
   publish = "dist"
   command = "npm install && npm run build"
 
+[functions]
+  directory = "netlify/functions"
+
 [[redirects]]
   from = "/mobile/*"
   to = "/mobile/:splat"

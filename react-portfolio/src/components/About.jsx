@@ -68,45 +68,35 @@ function AIChat({ reducedMotion }) {
     }
   }, [messages]);
 
-  const getResponse = (message) => {
-    const lowerMessage = message.toLowerCase();
-
-    if (lowerMessage.includes('experience') || lowerMessage.includes('work') || lowerMessage.includes('job')) {
-      return "Shan worked as a Site Reliability Engineer at Mastercard (Summer 2025), building AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automating infrastructure provisioning. Before that, he was a Product Manager at Nutrify AI (Spring 2025), leading multimodal AI features across conversational LLM and computer vision capabilities.";
-    }
-    if (lowerMessage.includes('skill') || lowerMessage.includes('tech')) {
-      return "Shan's technical skills include Python, React, TypeScript, FastAPI, Docker, Terraform, AWS, CI/CD, and ML/AI integration. He has strong cloud expertise with AWS services and DevOps practices.";
-    }
-    if (lowerMessage.includes('project') || lowerMessage.includes('ghosted')) {
-      return "Shan's notable projects include Ghosted, a full-stack AI-native cloud automation platform using React, TypeScript, FastAPI, Python, and AWS. He also developed an AI assistant at Mastercard.";
-    }
-    if (lowerMessage.includes('education') || lowerMessage.includes('school')) {
-      return "Shan is studying Computer Science at the University of Texas at Dallas with a focus on AI and cloud technologies.";
-    }
-    return "I'm Shan's AI assistant. I can tell you about his experience, technical skills, projects, or education. What would you like to know?";
-  };
-
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = {
-      id: Date.now(),
-      content: input,
-      isUser: true,
-    };
+    const userMessage = { id: Date.now(), content: input, isUser: true };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: input }),
+      });
+      const data = await res.json();
       setIsTyping(false);
-      const response = getResponse(input);
       setMessages((prev) => [...prev, {
         id: Date.now() + 1,
-        content: response,
+        content: data.reply || "Sorry, I couldn't get a response.",
         isUser: false,
       }]);
-    }, 1000 + Math.random() * 500);
+    } catch {
+      setIsTyping(false);
+      setMessages((prev) => [...prev, {
+        id: Date.now() + 1,
+        content: "Something went wrong. Try again.",
+        isUser: false,
+      }]);
+    }
   };
 
   return (
