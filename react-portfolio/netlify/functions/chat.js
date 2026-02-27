@@ -1,9 +1,14 @@
-export default async (req) => {
-  if (req.method !== 'POST') {
-    return new Response('Method not allowed', { status: 405 });
+exports.handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method not allowed' };
   }
 
-  const { message } = await req.json();
+  let message;
+  try {
+    ({ message } = JSON.parse(event.body));
+  } catch {
+    return { statusCode: 400, body: 'Invalid request body' };
+  }
 
   const systemPrompt = `You are Shan Irshad's personal AI assistant on his portfolio website. Answer questions about Shan concisely and naturally — like a knowledgeable friend, not a resume.
 
@@ -25,41 +30,46 @@ Skills:
 
 Outside tech: cheers on Liverpool FC and goes to the gym.
 
-Keep answers short and conversational. If asked something you don't know about Shan, say so honestly. Don't make things up.`;
+Keep answers short and conversational. If asked something you don't know about Shan, say so honestly.`;
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-    },
-    body: JSON.stringify({
-      model: 'gpt-4o-mini',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: message },
-      ],
-      max_tokens: 200,
-      temperature: 0.7,
-    }),
-  });
-
-  if (!response.ok) {
-    return new Response(JSON.stringify({ error: 'Failed to get response' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
+  try {
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: message },
+        ],
+        max_tokens: 200,
+        temperature: 0.7,
+      }),
     });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      console.error('OpenAI error:', data);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({ error: 'OpenAI request failed', detail: data }),
+      };
+    }
+
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reply: data.choices[0].message.content }),
+    };
+  } catch (err) {
+    console.error('Function error:', err);
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ error: 'Internal server error' }),
+    };
   }
-
-  const data = await response.json();
-  const reply = data.choices[0].message.content;
-
-  return new Response(JSON.stringify({ reply }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
-};
-
-export const config = {
-  path: '/api/chat',
 };

@@ -7,6 +7,11 @@
   directory = "netlify/functions"
 
 [[redirects]]
+  from = "/api/chat"
+  to = "/.netlify/functions/chat"
+  status = 200
+
+[[redirects]]
   from = "/mobile/*"
   to = "/mobile/:splat"
   status = 200
