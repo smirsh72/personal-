@@ -9,11 +9,7 @@ const experiences = [
     company: 'Mastercard',
     date: 'Summer 2025',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
-    bullets: [
-      '40% reduction in mean time to triage by building an AI-powered incident management tool with Python, LLMs, Splunk & Remedy APIs',
-      '25% improvement in anomaly detection accuracy by engineering ML algorithms across 100K+ log events',
-      '40% faster deployment cycles by automating cloud infrastructure provisioning with Terraform & Jenkins CI/CD',
-    ],
+    description: 'Worked on distributed file transfer systems and cloud infrastructure reliability, building AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automation of infrastructure provisioning to improve deployment speed and operational visibility.',
   },
   {
     id: 2,
@@ -21,11 +17,7 @@ const experiences = [
     company: 'Nutrify AI',
     date: 'Spring 2025',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
-    bullets: [
-      '25% increase in app downloads by building a conversational AI chatbot with FastAPI & OpenAI, validated through 15 interviews and 100+ surveys',
-      '45% boost in user engagement by implementing ML-powered personalization features',
-      '30% lift in overall user activity by optimizing performance and leading technical architecture for the nutrition platform',
-    ],
+    description: 'Worked on multimodal AI features across conversational LLM and computer vision capabilities, leading development of an AI nutrition platform focused on personalization, engagement, and scalable product architecture.',
   },
 ];
 
@@ -65,11 +57,7 @@ function ExperienceCard({ experience, index, reducedMotion, isMobile }) {
               <p className="experience-company">@ {experience.company}</p>
               <span className="experience-date-pill">{experience.date}</span>
             </div>
-            <ul className="experience-bullets">
-              {experience.bullets.map((bullet, i) => (
-                <li key={i} className="experience-bullet">{bullet}</li>
-              ))}
-            </ul>
+            <p className="experience-description">{experience.description}</p>
           </div>
         </div>
       </motion.div>

@@ -72,7 +72,7 @@ function AIChat({ reducedMotion }) {
     const lowerMessage = message.toLowerCase();
 
     if (lowerMessage.includes('experience') || lowerMessage.includes('work') || lowerMessage.includes('job')) {
-      return "Shan has experience as a Technical Product Manager at Nutrify AI and as a Site Reliability Engineer Intern at Mastercard, where he developed a Copilot-style AI assistant that reduced incident triage time by 40%.";
+      return "Shan worked as a Site Reliability Engineer at Mastercard (Summer 2025), building AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automating infrastructure provisioning. Before that, he was a Product Manager at Nutrify AI (Spring 2025), leading multimodal AI features across conversational LLM and computer vision capabilities.";
     }
     if (lowerMessage.includes('skill') || lowerMessage.includes('tech')) {
       return "Shan's technical skills include Python, React, TypeScript, FastAPI, Docker, Terraform, AWS, CI/CD, and ML/AI integration. He has strong cloud expertise with AWS services and DevOps practices.";
@@ -254,13 +254,13 @@ export default function About() {
               <div className="about-content">
                 <div className="about-text">
                   <p className="intro-paragraph">
-                    Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product enthusiast who builds software that solves real problems.
+                    Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product-focused builder turning complex systems into usable software.
                   </p>
                   <p className="secondary-paragraph">
-                    I focus on <span className="gradient-text highlight-text">AI</span> and <span className="gradient-text highlight-text">cloud systems</span>, turning complex ideas into products people can actually use. My main project, <span className="gradient-text highlight-text">Ghosted</span>, lets you deploy cloud infrastructure using plain English.
+                    I'm currently building <span className="gradient-text highlight-text">Prismo</span>, an AI routing platform focused on cost, reliability, and governance, and previously built <span className="gradient-text highlight-text">Ghosted</span>, a cloud copilot for deploying infrastructure with plain English. I'm interested in platform products, scalable systems, and product strategy.
                   </p>
                   <p className="secondary-paragraph">
-                    Beyond the screen, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
+                    Outside tech, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
                   </p>
                 </div>
                 <div className="exploring-section">
@@ -330,13 +330,13 @@ export default function About() {
             <div className="about-content">
               <motion.div className="about-text" variants={itemVariants}>
                 <motion.p className="intro-paragraph" variants={itemVariants}>
-                  Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product enthusiast who builds software that solves real problems.
+                  Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product-focused builder turning complex systems into usable software.
                 </motion.p>
                 <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  I focus on <span className="gradient-text highlight-text">AI</span> and <span className="gradient-text highlight-text">cloud systems</span>, turning complex ideas into products people can actually use. My main project, <span className="gradient-text highlight-text">Ghosted</span>, lets you deploy cloud infrastructure using plain English.
+                  I'm currently building <span className="gradient-text highlight-text">Prismo</span>, an AI routing platform focused on cost, reliability, and governance, and previously built <span className="gradient-text highlight-text">Ghosted</span>, a cloud copilot for deploying infrastructure with plain English. I'm interested in platform products, scalable systems, and product strategy.
                 </motion.p>
                 <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  Beyond the screen, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
+                  Outside tech, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
                 </motion.p>
               </motion.div>
 

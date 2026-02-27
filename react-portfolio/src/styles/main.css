@@ -344,7 +344,7 @@ body {
     rgba(167, 139, 250, 0.15) 45%,
     transparent 65%
   );
-  opacity: 0.5;
+  opacity: 0.43;
 }
 
 /* Violet — center right */
@@ -362,7 +362,7 @@ body {
     rgba(109, 40, 217, 0.15) 45%,
     transparent 65%
   );
-  opacity: 0.45;
+  opacity: 0.38;
 }
 
 /* Indigo / blue — bottom center */
@@ -380,7 +380,7 @@ body {
     rgba(59, 130, 246, 0.15) 45%,
     transparent 65%
   );
-  opacity: 0.45;
+  opacity: 0.38;
 }
 
 /* Deep indigo horizon — bottom */
@@ -398,7 +398,7 @@ body {
     transparent 100%
   );
   filter: blur(80px);
-  opacity: 0.4;
+  opacity: 0.34;
 }
 
 /* Teal accent — floating center */
@@ -415,7 +415,7 @@ body {
     rgba(6, 182, 212, 0.25) 35%,
     transparent 65%
   );
-  opacity: 0.3;
+  opacity: 0.26;
 }
 
 /* Film grain overlay */
@@ -555,6 +555,16 @@ body {
   font-weight: 500;
   color: var(--text-primary);
   letter-spacing: 0.08em;
+}
+
+.hero-subline {
+  display: block;
+  font-family: var(--font-satoshi);
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  margin-top: 0.75rem;
 }
 
 .word-carousel-container {
@@ -1233,6 +1243,13 @@ body {
   color: var(--text-secondary);
   font-size: 0.95rem;
   text-align: left;
+}
+
+.experience-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0;
 }
 
 .experience-bullets {

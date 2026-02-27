@@ -177,11 +177,8 @@ export default function Hero() {
           <div className="intro-sequence">
             <div className="intro-text">
               <h1 className="hero-text">
-                <div className="greeting-line">
-                  <span className="static-text hi">Hi,</span>
-                  <span className="static-text im">I'm</span>
-                </div>
-                <WordCarousel reducedMotion={reducedMotion} isMobile={true} />
+                <span className="gradient-text">Shan Irshad</span>
+                <span className="hero-subline">Currently building Prismo — AI routing infrastructure for cost, reliability, and governance.</span>
               </h1>
             </div>
           </div>
@@ -233,26 +230,11 @@ export default function Hero() {
         <div className="intro-sequence">
           <div className="intro-text">
             <h1 className="hero-text">
-              <motion.div className="greeting-line" variants={itemVariants}>
-                <motion.span
-                  className="static-text hi"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  Hi,
-                </motion.span>
-                <motion.span
-                  className="static-text im"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                >
-                  I'm
-                </motion.span>
+              <motion.div variants={itemVariants}>
+                <span className="gradient-text glow-effect">Shan Irshad</span>
               </motion.div>
               <motion.div variants={itemVariants}>
-                <WordCarousel reducedMotion={reducedMotion} isMobile={false} />
+                <span className="hero-subline">Currently building Prismo — AI routing infrastructure for cost, reliability, and governance.</span>
               </motion.div>
             </h1>
           </div>

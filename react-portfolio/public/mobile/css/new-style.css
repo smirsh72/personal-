@@ -577,6 +577,16 @@ body {
     flex-wrap: wrap;
 }
 
+.hero-subline {
+    display: block;
+    font-family: 'Satoshi', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.02em;
+    margin-top: 0.75rem;
+}
+
 /* Hero section text styles */
 .hero-text {
     font-family: 'Satoshi', sans-serif;
