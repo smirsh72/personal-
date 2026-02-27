@@ -178,7 +178,6 @@ export default function Hero() {
             <div className="intro-text">
               <h1 className="hero-text">
                 <span className="gradient-text">Shan Irshad</span>
-                <span className="hero-subline">Currently building Prismo — AI routing infrastructure for cost, reliability, and governance.</span>
               </h1>
             </div>
           </div>
@@ -232,9 +231,6 @@ export default function Hero() {
             <h1 className="hero-text">
               <motion.div variants={itemVariants}>
                 <span className="gradient-text glow-effect">Shan Irshad</span>
-              </motion.div>
-              <motion.div variants={itemVariants}>
-                <span className="hero-subline">Currently building Prismo — AI routing infrastructure for cost, reliability, and governance.</span>
               </motion.div>
             </h1>
           </div>
