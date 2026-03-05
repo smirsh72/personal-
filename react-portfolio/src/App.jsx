@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Certifications from './components/Certifications';
@@ -28,7 +27,6 @@ function App() {
       <div className="app">
         <Navbar />
         <main>
-          <Hero />
           <About />
           <Experience />
           <Certifications />

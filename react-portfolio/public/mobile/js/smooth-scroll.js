@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get all links inside the navbar
   const navbarLinks = document.querySelectorAll('.navbar-link');
   const navbar = document.querySelector('.navbar');
-  const heroSection = document.getElementById('hero');
+  const entrySection = document.getElementById('about') || document.getElementById('hero');
   
   // Check if we should scroll to hero section (coming back from Ghosted page)
   if (localStorage.getItem('scrollToHero') === 'true') {
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Scroll to hero section with a slight delay to ensure page is loaded
     setTimeout(() => {
-      if (heroSection) {
+      if (entrySection) {
         window.scrollTo({
-          top: heroSection.offsetTop,
+          top: entrySection.offsetTop,
           behavior: 'smooth'
         });
       }
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (href.startsWith('#')) {
         e.preventDefault();
         
-        const targetId = href === '#' ? 'hero' : href.substring(1);
+        const targetId = href === '#' ? (entrySection ? entrySection.id : 'about') : href.substring(1);
         const targetElement = document.getElementById(targetId);
         
         if (targetElement) {
@@ -55,12 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Function to control header visibility based on scroll position
   function handleHeaderVisibility() {
-    if (!heroSection) return;
+    if (!entrySection) return;
     
-    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    const entryBottom = entrySection.getBoundingClientRect().bottom;
     
     // If we've scrolled past the hero section
-    if (heroBottom <= 0) {
+    if (entryBottom <= 0) {
       navbar.classList.add('navbar-hidden');
     } else {
       navbar.classList.remove('navbar-hidden');

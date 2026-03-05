@@ -8,7 +8,7 @@ export default function Navbar() {
   const reducedMotion = useReducedMotion();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('about');
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -36,7 +36,7 @@ export default function Navbar() {
       setLastScrollY(currentScrollY);
 
       // Determine active section
-      const sections = ['hero', 'about', 'experience', 'certifications'];
+      const sections = ['about', 'experience', 'certifications'];
       for (const section of sections.reverse()) {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
@@ -58,7 +58,6 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { id: 'about', label: 'About Me' },
     { id: 'experience', label: 'Experience' },
     { id: 'certifications', label: 'Certifications' },
   ];
@@ -76,9 +75,9 @@ export default function Navbar() {
       <div className="navbar-container">
         <div className="site-logo">
           <motion.a
-            href="#hero"
+            href="#about"
             className="site-name"
-            onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }}
+            onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
             whileHover={reducedMotion ? {} : { scale: 1.02 }}
             whileTap={reducedMotion ? {} : { scale: 0.98 }}
           >

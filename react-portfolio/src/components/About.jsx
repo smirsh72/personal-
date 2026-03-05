@@ -23,6 +23,7 @@ function AIChat({ reducedMotion }) {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef(null);
+  const normalizeAssistantText = (text) => String(text || '').toLowerCase();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -51,10 +52,10 @@ function AIChat({ reducedMotion }) {
       });
       const data = await res.json();
       setIsTyping(false);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, content: data.reply || "couldn't get a response.", isUser: false }]);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, content: normalizeAssistantText(data.reply || "couldn't get a response."), isUser: false }]);
     } catch {
       setIsTyping(false);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, content: "something went wrong. try again.", isUser: false }]);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, content: normalizeAssistantText("something went wrong. try again."), isUser: false }]);
     }
   };
 
@@ -163,7 +164,7 @@ export default function About() {
         />
         <div className="about-identity-text">
           <span className="about-name">Shan Irshad</span>
-          <span className="about-handle">learning</span>
+          <span className="about-handle">exploring</span>
           <div className="social-icons-container">
             <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
             <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
@@ -191,7 +192,7 @@ export default function About() {
       <div className="about-divider" />
 
       {/* Personal */}
-      <p className="about-personal">liverpool fc 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
+      <p className="about-personal">hobbies: venture &nbsp;·&nbsp; startups &nbsp;·&nbsp; liverpool fc 🔴 &nbsp;·&nbsp; gym</p>
 
     </div>
   );

@@ -50,7 +50,7 @@ function handleBackNavigation(e) {
     
     // Navigate after fade completes
     setTimeout(() => {
-      window.location.href = 'index.html?skipLoading=true#hero';
+      window.location.href = 'index.html?skipLoading=true#about';
     }, 300);
   }, 10);
   

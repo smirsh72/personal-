@@ -1,5 +1,6 @@
 /* CSS Variables */
 :root[data-theme="dark"] {
+    color-scheme: dark;
     /* Dark Mode Colors */
     --bg-primary: #121212;
     --bg-secondary: #121212;
@@ -30,6 +31,7 @@
 
 /* Light Mode (Default) */
 :root {
+    color-scheme: light;
     /* Light Mode Colors (default) */
     --bg-primary: #f9fafb;
     --bg-secondary: #e4e9f4;
@@ -66,6 +68,92 @@
     --transition-fast: 0.3s;
     --transition-medium: 0.5s;
     --transition-slow: 0.8s;
+}
+
+:root.theme-transitioning :is(
+    body,
+    .navbar,
+    .sticky-nav,
+    section,
+    .about-section,
+    .experience-section,
+    .certifications-section,
+    .about-content,
+    .experience-card,
+    .certification-card,
+    .ai-chat-container,
+    .chat-header,
+    .chat-messages,
+    .chat-input,
+    .assistant-message,
+    .user-message,
+    .dm-container,
+    .dm-messages,
+    .dm-input,
+    .dm-input-row,
+    .social-icon,
+    .exploring-tag,
+    .status-dot,
+    .status-text,
+    .theme-toggle,
+    .theme-toggle i
+) {
+    transition-property: color, background-color, border-color, box-shadow, fill, stroke, text-decoration-color, outline-color;
+    transition-duration: 260ms;
+    transition-timing-function: ease;
+}
+
+:root.theme-transitioning :is(
+    .about-section,
+    .experience-section,
+    .certifications-section,
+    .hero
+)::before {
+    transition-property: background-color, border-color, box-shadow, opacity;
+    transition-duration: 260ms;
+    transition-timing-function: ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root.theme-transitioning :is(
+        body,
+        .navbar,
+        .sticky-nav,
+        section,
+        .about-section,
+        .experience-section,
+        .certifications-section,
+        .about-content,
+        .experience-card,
+        .certification-card,
+        .ai-chat-container,
+        .chat-header,
+        .chat-messages,
+        .chat-input,
+        .assistant-message,
+        .user-message,
+        .dm-container,
+        .dm-messages,
+        .dm-input,
+        .dm-input-row,
+        .social-icon,
+        .exploring-tag,
+        .status-dot,
+        .status-text,
+        .theme-toggle,
+        .theme-toggle i
+    ) {
+        transition: none !important;
+    }
+
+    :root.theme-transitioning :is(
+        .about-section,
+        .experience-section,
+        .certifications-section,
+        .hero
+    )::before {
+        transition: none !important;
+    }
 }
 
 /* Reset */
@@ -1395,6 +1483,7 @@ body {
 .about-section {
     background-color: var(--accent-white, #ffffff);
     padding: 8rem 8% 8rem;
+    min-height: 100svh;
     position: relative;
     overflow: hidden;
     font-family: 'Inter', 'DM Sans', 'Satoshi', sans-serif;

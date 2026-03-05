@@ -323,6 +323,9 @@ document.addEventListener('DOMContentLoaded', function() {
   - Product management, especially for technical products and AI/ML applications
   - Cloud automation, AI/ML applications, DevOps, and building technical products
   - Creating intuitive interfaces for complex technical workflows
+  
+  STYLE:
+  - write all replies in lowercase
   `;
   
   // Hardcoded responses for common questions
@@ -645,6 +648,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function randomChoice(array) {
     return array[Math.floor(Math.random() * array.length)];
   }
+
+  function normalizeAssistantText(content) {
+    return String(content || '').toLowerCase();
+  }
   
   function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
@@ -659,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const messageContent = document.createElement('span');
     messageContent.classList.add('dm-text');
-    messageContent.textContent = content;
+    messageContent.textContent = isUser ? content : normalizeAssistantText(content);
 
     messageDiv.appendChild(label);
     messageDiv.appendChild(messageContent);

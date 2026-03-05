@@ -30,7 +30,8 @@ Skills:
 
 Outside tech: cheers on Liverpool FC and goes to the gym.
 
-Keep answers short and conversational. If asked something you don't know about Shan, say so honestly.`;
+Keep answers short and conversational. If asked something you don't know about Shan, say so honestly.
+Write all replies in lowercase.`;
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -63,7 +64,7 @@ Keep answers short and conversational. If asked something you don't know about S
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reply: data.choices[0].message.content }),
+      body: JSON.stringify({ reply: String(data.choices[0].message.content || '').toLowerCase() }),
     };
   } catch (err) {
     console.error('Function error:', err);

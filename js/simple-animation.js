@@ -91,6 +91,20 @@ function showHeroSection() {
     // Force a reflow to ensure hero is ready
     void hero.offsetHeight;
   }
+
+  // Fallback: if hero is removed and About is the first section, reveal About immediately.
+  if (loadingScreen && !hero) {
+    loadingScreen.style.opacity = '0';
+    window.scrollTo(0, 0);
+    if (about) {
+      about.style.opacity = '1';
+      about.style.transform = 'translateY(0)';
+    }
+    setTimeout(() => {
+      loadingScreen.style.display = 'none';
+    }, 300);
+    return;
+  }
   
   // Simultaneously hide loading screen and show hero
   if (loadingScreen && hero) {
