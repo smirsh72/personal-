@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const navbarLinks = document.querySelectorAll('.navbar-link');
   const navbar = document.querySelector('.navbar');
   const entrySection = document.getElementById('about') || document.getElementById('hero');
+  const getNavOffset = () => {
+    const navHeight = navbar ? navbar.offsetHeight : 0;
+    return navHeight + 12;
+  };
   
   // Check if we should scroll to hero section (coming back from Ghosted page)
   if (localStorage.getItem('scrollToHero') === 'true') {
@@ -19,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       if (entrySection) {
         window.scrollTo({
-          top: entrySection.offsetTop,
+          top: Math.max(0, entrySection.offsetTop - getNavOffset()),
           behavior: 'smooth'
         });
       }
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (targetElement) {
           window.scrollTo({
-            top: targetElement.offsetTop,
+            top: Math.max(0, targetElement.offsetTop - getNavOffset()),
             behavior: 'smooth'
           });
         }
