@@ -244,23 +244,23 @@ export default function About() {
               <div className="about-content">
                 <div className="about-text">
                   <p className="intro-paragraph">
-                    Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product-focused builder turning complex systems into usable software.
+                    Hi, I'm <span className="gradient-text highlight-text">Shan</span>. I build the tools I wish existed.
                   </p>
                   <p className="secondary-paragraph">
-                    I'm currently building <span className="gradient-text highlight-text">Prismo</span>, an AI routing platform focused on cost, reliability, and governance, and previously built <span className="gradient-text highlight-text">Ghosted</span>, a cloud copilot for deploying infrastructure with plain English. I'm interested in platform products, scalable systems, and product strategy.
+                    Right now I'm building <span className="gradient-text highlight-text">Prismo</span>, an AI routing layer for cost, reliability, and governance. Before that I built <span className="gradient-text highlight-text">Ghosted</span>, which lets you deploy cloud infrastructure using plain English.
                   </p>
                   <p className="secondary-paragraph">
-                    Outside tech, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
+                    Liverpool FC 🔴 and the gym when I'm not shipping.
                   </p>
                 </div>
                 <div className="exploring-section">
-                  <h3 className="exploring-title">Currently Building Toward</h3>
+                  <h3 className="exploring-title">Currently building</h3>
                   <div className="exploring-tags">
-                    <ExploringTag delay={0} reducedMotion={true}>💰 FinOps & API Optimization</ExploringTag>
+                    <ExploringTag delay={0} reducedMotion={true}>Prismo — AI routing & cost optimization</ExploringTag>
                   </div>
                 </div>
                 <p className="ai-prompt">
-                  For anything else, feel free to ask my AI <span className="emoji"></span>
+                  Ask my AI anything below.
                 </p>
                 <div className="social-icons-container">
                   <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0} reducedMotion={true} />
@@ -320,25 +320,25 @@ export default function About() {
             <div className="about-content">
               <motion.div className="about-text" variants={itemVariants}>
                 <motion.p className="intro-paragraph" variants={itemVariants}>
-                  Hi, I'm <span className="gradient-text highlight-text">Shan Irshad</span> — a product-focused builder turning complex systems into usable software.
+                  Hi, I'm <span className="gradient-text highlight-text">Shan</span>. I build the tools I wish existed.
                 </motion.p>
                 <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  I'm currently building <span className="gradient-text highlight-text">Prismo</span>, an AI routing platform focused on cost, reliability, and governance, and previously built <span className="gradient-text highlight-text">Ghosted</span>, a cloud copilot for deploying infrastructure with plain English. I'm interested in platform products, scalable systems, and product strategy.
+                  Right now I'm building <span className="gradient-text highlight-text">Prismo</span>, an AI routing layer for cost, reliability, and governance. Before that I built <span className="gradient-text highlight-text">Ghosted</span>, which lets you deploy cloud infrastructure using plain English.
                 </motion.p>
                 <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  Outside tech, you'll find me cheering on 🔴 Liverpool FC ⚽ or at the gym.
+                  Liverpool FC 🔴 and the gym when I'm not shipping.
                 </motion.p>
               </motion.div>
 
               <motion.div className="exploring-section" variants={itemVariants}>
-                <h3 className="exploring-title">Currently Building Toward</h3>
+                <h3 className="exploring-title">Currently building</h3>
                 <div className="exploring-tags">
-                  <ExploringTag delay={0.3} reducedMotion={reducedMotion}>💰 FinOps & API Optimization</ExploringTag>
+                  <ExploringTag delay={0.3} reducedMotion={reducedMotion}>Prismo — AI routing & cost optimization</ExploringTag>
                 </div>
               </motion.div>
 
               <motion.p className="ai-prompt" variants={itemVariants}>
-                For anything else, feel free to ask my AI <span className="emoji"></span>
+                Ask my AI anything below.
               </motion.p>
 
               <motion.div className="social-icons-container" variants={itemVariants}>
