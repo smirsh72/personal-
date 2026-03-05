@@ -2,41 +2,17 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
-// Typing indicator component
-function TypingIndicator() {
-  return (
-    <div className="message assistant-message typing-indicator">
-      <div className="typing-dots">
-        <motion.span
-          animate={{ scale: [0.6, 1, 0.6] }}
-          transition={{ duration: 0.6, repeat: Infinity, delay: 0 }}
-        />
-        <motion.span
-          animate={{ scale: [0.6, 1, 0.6] }}
-          transition={{ duration: 0.6, repeat: Infinity, delay: 0.15 }}
-        />
-        <motion.span
-          animate={{ scale: [0.6, 1, 0.6] }}
-          transition={{ duration: 0.6, repeat: Infinity, delay: 0.3 }}
-        />
-      </div>
-    </div>
-  );
-}
-
-// Chat message component
+// Chat message component — plain text, no bubbles
 function ChatMessage({ content, isUser, reducedMotion }) {
   return (
     <motion.div
-      className={`message ${isUser ? 'user-message' : 'assistant-message'}`}
-      initial={{ opacity: 0, y: reducedMotion ? 0 : 15, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        duration: reducedMotion ? 0.1 : 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
+      className={`dm-message ${isUser ? 'dm-user' : 'dm-ai'}`}
+      initial={{ opacity: 0, y: reducedMotion ? 0 : 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: reducedMotion ? 0.1 : 0.3, ease: 'easeOut' }}
     >
-      <div className="message-content">{content}</div>
+      <span className="dm-label">{isUser ? 'you' : 'ai'}</span>
+      <span className="dm-text">{content}</span>
     </motion.div>
   );
 }
@@ -46,36 +22,27 @@ function AIChat({ reducedMotion }) {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
   const chatContainerRef = useRef(null);
 
   useEffect(() => {
-    // Add welcome message
     const timer = setTimeout(() => {
-      setMessages([{
-        id: 1,
-        content: "what's up. ask me anything about shan.",
-        isUser: false,
-      }]);
+      setMessages([{ id: 1, content: "what's up. ask me anything about shan.", isUser: false }]);
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    // Scroll within the chat container only, not the whole page
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, isTyping]);
 
   const handleSend = async () => {
     if (!input.trim()) return;
-
     const userMessage = { id: Date.now(), content: input, isUser: true };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsTyping(true);
-
     try {
       const res = await fetch('/.netlify/functions/chat', {
         method: 'POST',
@@ -84,57 +51,33 @@ function AIChat({ reducedMotion }) {
       });
       const data = await res.json();
       setIsTyping(false);
-      setMessages((prev) => [...prev, {
-        id: Date.now() + 1,
-        content: data.reply || "Sorry, I couldn't get a response.",
-        isUser: false,
-      }]);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, content: data.reply || "couldn't get a response.", isUser: false }]);
     } catch {
       setIsTyping(false);
-      setMessages((prev) => [...prev, {
-        id: Date.now() + 1,
-        content: "Something went wrong. Try again.",
-        isUser: false,
-      }]);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, content: "something went wrong. try again.", isUser: false }]);
     }
   };
 
   return (
-    <div className="ai-chat-container">
-      <div className="chat-header">
-        <h3 className="chat-title">Shan's AI</h3>
-        <p className="chat-subtitle">Ask it anything.</p>
-      </div>
-      <div className="chat-messages" ref={chatContainerRef}>
+    <div className="dm-container">
+      <div className="dm-messages" ref={chatContainerRef}>
         <AnimatePresence>
           {messages.map((msg) => (
-            <ChatMessage
-              key={msg.id}
-              content={msg.content}
-              isUser={msg.isUser}
-              reducedMotion={reducedMotion}
-            />
+            <ChatMessage key={msg.id} content={msg.content} isUser={msg.isUser} reducedMotion={reducedMotion} />
           ))}
         </AnimatePresence>
-        {isTyping && <TypingIndicator />}
+        {isTyping && <div className="dm-typing"><span className="dm-label">ai</span><span className="dm-text">...</span></div>}
       </div>
-      <div className="chat-input-container">
+      <div className="dm-input-row">
         <input
           type="text"
-          className="chat-input"
-          placeholder="Ask me anything..."
+          className="dm-input"
+          placeholder="type something..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
         />
-        <motion.button
-          className="send-button"
-          onClick={handleSend}
-          whileHover={reducedMotion ? {} : { scale: 1.05 }}
-          whileTap={reducedMotion ? {} : { scale: 0.95 }}
-        >
-          <i className="fas fa-paper-plane" />
-        </motion.button>
+        <button className="dm-send" onClick={handleSend}>→</button>
       </div>
     </div>
   );
@@ -226,11 +169,6 @@ export default function About() {
 
       <div className="about-divider" />
 
-      {/* Bio */}
-      <p className="about-bio">
-        Always learning.
-      </p>
-
       {/* Projects */}
       <div className="about-projects">
         <div className="about-project-row">
@@ -248,7 +186,7 @@ export default function About() {
       <div className="about-divider" />
 
       {/* Personal */}
-      <p className="about-personal">Liverpool FC 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
+      <p className="about-personal">liverpool fc 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
 
       {/* Socials */}
       <div className="social-icons-container">
@@ -268,7 +206,7 @@ export default function About() {
             <div className="about-right-column">
               <div className="ai-status-badge">
                 <span className="status-dot" />
-                <span className="status-text">Shan.ai Online</span>
+                <span className="status-text">shan.ai · online</span>
               </div>
               <AIChat reducedMotion={true} />
             </div>
@@ -299,7 +237,7 @@ export default function About() {
               transition={{ delay: 0.5, duration: 0.4 }}
             >
               <span className="status-dot" />
-              <span className="status-text">Shan.ai Online</span>
+              <span className="status-text">shan.ai · online</span>
             </motion.div>
             <AIChat reducedMotion={reducedMotion} />
           </motion.div>

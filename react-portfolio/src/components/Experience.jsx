@@ -9,7 +9,7 @@ const experiences = [
     company: 'Mastercard',
     date: 'Summer 2025',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
-    description: 'Worked on distributed file transfer systems and cloud infrastructure reliability, building AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automation of infrastructure provisioning to improve deployment speed and operational visibility.',
+    description: 'Built AI tooling for incident triage and anomaly detection across large-scale log data. Automated infra provisioning to improve deployment speed and operational visibility.',
   },
   {
     id: 2,
@@ -17,86 +17,39 @@ const experiences = [
     company: 'Nutrify AI',
     date: 'Spring 2025',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
-    description: 'Worked on multimodal AI features across conversational LLM and computer vision capabilities, leading development of an AI nutrition platform focused on personalization, engagement, and scalable product architecture.',
+    description: 'Led multimodal AI features — conversational LLM and computer vision — for an AI nutrition platform focused on personalization and scalable architecture.',
   },
 ];
 
-// Check if mobile on initial render
 const getInitialMobile = () => {
-  if (typeof window !== 'undefined') {
-    return window.innerWidth <= 768;
-  }
+  if (typeof window !== 'undefined') return window.innerWidth <= 768;
   return false;
 };
 
-function ExperienceCard({ experience, index, reducedMotion, isMobile }) {
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, margin: isMobile ? '0px' : '-50px' });
+function ExperienceRow({ experience, index, reducedMotion, isMobile }) {
+  const rowRef = useRef(null);
+  const isInView = useInView(rowRef, { once: true, margin: isMobile ? '0px' : '-50px' });
 
-  // Mobile: show immediately with simple fade
-  if (isMobile) {
-    return (
-      <motion.div
-        ref={cardRef}
-        className="experience-card"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : {}}
-        transition={{ duration: 0.4 }}
-      >
-        <div className="experience-card-content">
-          <div className="company-logo-wrapper">
-            <div className="company-logo-container">
-              <img src={experience.logo} alt={`${experience.company} logo`} className="company-logo" />
-            </div>
-          </div>
-          <div className="experience-details">
-            <div className="experience-header">
-              <h3 className="experience-title">
-                <span className="gradient-role">{experience.title}</span>
-              </h3>
-              <p className="experience-company">@ {experience.company}</p>
-              <span className="experience-date-pill">{experience.date}</span>
-            </div>
-            <p className="experience-description">{experience.description}</p>
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-
-  // Desktop: full animations
   return (
     <motion.div
-      ref={cardRef}
-      className="experience-card"
-      initial={{ opacity: 0, y: 40 }}
+      ref={rowRef}
+      className="exp-row"
+      initial={{ opacity: 0, y: reducedMotion || isMobile ? 0 : 16 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        delay: index * 0.15,
-        duration: reducedMotion ? 0.1 : 0.6,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }}
-      whileHover={{
-        y: -5,
-        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.15), 0 4px 6px -2px rgba(0, 0, 0, 0.1)',
-        transition: { duration: 0.3 },
-      }}
+      transition={{ delay: index * 0.1, duration: reducedMotion ? 0.1 : 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
-      <div className="experience-card-content">
-        <div className="company-logo-wrapper">
-          <div className="company-logo-container">
-            <img src={experience.logo} alt={`${experience.company} logo`} className="company-logo" />
+      <div className="about-divider" />
+      <div className="exp-row-inner">
+        <span className="exp-date">{experience.date}</span>
+        <div className="exp-body">
+          <div className="exp-header">
+            <span className="exp-title">{experience.title}</span>
+            <div className="exp-company">
+              <img src={experience.logo} alt={experience.company} className="exp-logo" />
+              <span className="exp-company-name">{experience.company}</span>
+            </div>
           </div>
-        </div>
-        <div className="experience-details">
-          <div className="experience-header">
-            <h3 className="experience-title">
-              <span className="gradient-role">{experience.title}</span>
-            </h3>
-            <p className="experience-company">@ {experience.company}</p>
-            <span className="experience-date-pill">{experience.date}</span>
-          </div>
-          <p className="experience-description">{experience.description}</p>
+          <p className="exp-description">{experience.description}</p>
         </div>
       </div>
     </motion.div>
@@ -119,17 +72,17 @@ export default function Experience() {
     <section id="experience" className="modern-section experience-section" ref={sectionRef}>
       <div className="container">
         <motion.h2
-          className="section-subtitle text-center"
-          initial={{ opacity: 0, y: isMobile ? 0 : 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: isMobile ? 0.3 : 0.6 }}
+          className="section-label"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.5 }}
         >
-          <span className="section-title-gradient">Experience</span>
+          Experience
         </motion.h2>
 
-        <div className="experience-cards">
+        <div className="exp-list">
           {experiences.map((exp, index) => (
-            <ExperienceCard
+            <ExperienceRow
               key={exp.id}
               experience={exp}
               index={index}
@@ -137,6 +90,7 @@ export default function Experience() {
               isMobile={isMobile}
             />
           ))}
+          <div className="about-divider" />
         </div>
       </div>
     </section>
