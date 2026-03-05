@@ -1223,17 +1223,21 @@ body {
   }
 
   .about-section {
-    padding: 7.5rem 5% 6rem;
+    padding: 10rem 4.5% 6.25rem;
   }
 
   .profile-image-circle {
-    width: 180px;
-    height: 180px;
+    width: 190px;
+    height: 190px;
   }
 
   .experience-section,
   .certifications-section {
-    padding: 6rem 5%;
+    padding: 6.75rem 4.5%;
+  }
+
+  .modern-section {
+    scroll-margin-top: 7.5rem;
   }
 
   .experience-card-content {
@@ -1301,12 +1305,21 @@ body {
   }
 
   .about-section {
-    padding-top: 6.75rem;
+    padding: 9.5rem 4% 4.5rem;
   }
 
   .profile-image-circle {
-    width: 160px;
-    height: 160px;
+    width: 170px;
+    height: 170px;
+  }
+
+  .experience-section,
+  .certifications-section {
+    padding: 6.5rem 4%;
+  }
+
+  .modern-section {
+    scroll-margin-top: 9rem;
   }
 
   .certification-badge-container {

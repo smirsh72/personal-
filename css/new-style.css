@@ -2391,21 +2391,21 @@ body {
     }
     
     .about-section {
-        padding: 8.75rem 5% 6rem;
+        padding: 10rem 4.5% 6.25rem;
     }
 
     .modern-section {
-        scroll-margin-top: 6.75rem;
+        scroll-margin-top: 7.5rem;
     }
 }
 
 @media (max-width: 480px) {
     .about-section {
-        padding: 8.5rem 5% 4rem;
+        padding: 9.5rem 4% 4.5rem;
     }
 
     .modern-section {
-        scroll-margin-top: 8.25rem;
+        scroll-margin-top: 9rem;
     }
     
     .about-text {
@@ -2519,7 +2519,14 @@ body {
 @media (max-width: 768px) {
     .experience-section,
     .certifications-section {
-        padding: 6rem 5%;
+        padding: 6.75rem 4.5%;
+    }
+}
+
+@media (max-width: 480px) {
+    .experience-section,
+    .certifications-section {
+        padding: 6.5rem 4%;
     }
 }
 
