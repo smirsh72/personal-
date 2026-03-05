@@ -5,7 +5,6 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
 import Certifications from './components/Certifications';
-import CursorTrail from './components/CursorTrail';
 import './styles/main.css';
 
 function App() {
@@ -26,7 +25,6 @@ function App() {
 
   return (
     <ThemeProvider>
-      <CursorTrail />
       <div className="app">
         <Navbar />
         <main>

@@ -357,11 +357,7 @@ export default function About() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.5, duration: 0.4 }}
             >
-              <motion.span
-                className="status-dot"
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <span className="status-dot" />
               <span className="status-text">Shan.ai Online</span>
             </motion.div>
             <AIChat reducedMotion={reducedMotion} />

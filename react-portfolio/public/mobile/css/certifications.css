@@ -8,19 +8,11 @@
 }
 
 [data-theme="dark"] .certifications-section {
-    background-color: var(--bg-primary, #1a1225);
+    background-color: var(--bg-primary, #0a0a0a);
 }
 
 .certifications-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 40%, rgba(244, 114, 182, 0.05) 0%, transparent 70%),
-                radial-gradient(circle at 70% 60%, rgba(244, 114, 182, 0.08) 0%, transparent 70%);
-    z-index: 0;
+    display: none;
 }
 
 .certifications-container {
@@ -51,9 +43,9 @@
 }
 
 [data-theme="dark"] .certification-card {
-    background-color: var(--card-bg, #241a35);
-    border-color: var(--border-color, rgba(120, 80, 150, 0.25));
-    box-shadow: 0 4px 6px -1px rgba(15, 8, 25, 0.4), 0 2px 4px -1px rgba(15, 8, 25, 0.2);
+    background-color: var(--card-bg, #1a1a1a);
+    border-color: var(--border-color, rgba(255, 255, 255, 0.08));
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
 .certification-card:hover {
@@ -63,7 +55,7 @@
 
 [data-theme="dark"] .certification-card:hover {
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
-    border-color: rgba(236, 72, 153, 0.3); /* Pink border on hover in dark mode */
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
 .certification-badge-container {
@@ -95,7 +87,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(139, 92, 246, 0.95));
+    background: rgba(17, 24, 39, 0.92);
     border-radius: 50%;
     display: flex;
     flex-direction: column;
@@ -107,7 +99,7 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     color: white;
     text-align: center;
-    box-shadow: 0 10px 25px rgba(236, 72, 153, 0.3);
+    box-shadow: none;
 }
 
 .certification-badge-container:hover .certification-hover-info {
@@ -173,29 +165,26 @@
     gap: 0.5rem;
     font-size: 0.9rem;
     font-weight: 500;
-    color: #ec4899;
+    color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .certification-link:hover {
-    color: #be185d;
+    color: var(--text-primary);
     text-decoration: underline;
 }
 
 [data-theme="dark"] .certification-link {
-    color: #f472b6;
+    color: var(--text-secondary);
 }
 
 [data-theme="dark"] .certification-link:hover {
-    color: #ec4899;
+    color: var(--text-primary);
 }
 
 .gradient-role {
-    background: linear-gradient(90deg, #ec4899, #8b5cf6);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-primary);
     font-weight: 700;
 }
 

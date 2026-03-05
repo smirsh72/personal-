@@ -683,6 +683,10 @@ body {
   transition: transform 0.3s ease;
 }
 
+[data-theme="dark"] .profile-image {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
 /* About Content */
 .about-content {
   display: flex;
@@ -905,7 +909,7 @@ body {
 }
 
 [data-theme="dark"] .chat-messages {
-  background-color: #1a1225;
+  background-color: #111111;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -970,9 +974,9 @@ body {
 }
 
 [data-theme="dark"] .chat-input {
-  background-color: #1a1225;
+  background-color: #1a1a1a;
   color: #e2e8f0;
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .chat-input:focus {

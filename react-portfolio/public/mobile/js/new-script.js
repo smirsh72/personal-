@@ -3,17 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const changingWord = document.getElementById('changing-word');
     if (changingWord) {
-      // Apply styles directly
       changingWord.style.opacity = '1';
       changingWord.style.visibility = 'visible';
       changingWord.style.display = 'inline-block';
-      
-      // Apply gradient directly
-      changingWord.style.background = 'linear-gradient(90deg, #8b5cf6, #ec4899, #facc15)';
-      changingWord.style.backgroundSize = '200% auto';
-      changingWord.style.backgroundClip = 'text';
-      changingWord.style.webkitBackgroundClip = 'text';
-      changingWord.style.webkitTextFillColor = 'transparent';
     }
   }, 100);
   
@@ -82,8 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // const wordDisplayDuration = 3000; // Display each word for 3 seconds
   // const wordTransitionDuration = 800; // ms for fade in/out animation (matches CSS)
   
-  // Create sparkles
-  createSparkles();
+  // Sparkles disabled
   
   // Function to create sparkle elements
   function createSparkles() {
@@ -187,10 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     */
   }
   
-  // Add mouse movement shimmer effect
-  document.addEventListener('mousemove', function(e) {
-    createShimmerOnMove(e);
-  });
+  // Mouse shimmer disabled
 
   // Only call setupSmoothScroll if we're on a page that needs it
   // This helps prevent errors on pages without the relevant elements
@@ -386,8 +374,7 @@ function cycleWords() {
   
   // Mouse movement shimmer effect is already set up above
   
-  // Initialize particles for background effect
-  createParticles();
+  // Particles disabled
   
   // DISABLED: Word cycling is now handled by word-cycle.js
   // cycleWords();
