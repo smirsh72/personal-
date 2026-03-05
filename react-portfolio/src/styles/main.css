@@ -1431,10 +1431,16 @@ body {
   font-size: 0.92rem;
 }
 
-:where(.site-name, .navbar-link, .theme-toggle, .social-icon, .dm-send, .send-button, .chat-input, .dm-input):focus-visible {
+:where(.site-name, .navbar-link, .theme-toggle, .social-icon, .dm-send, .send-button):focus-visible {
   outline: 2px solid var(--shared-focus-ring-color);
   outline-offset: 3px;
   border-radius: 0.6rem;
+}
+
+.chat-input:focus-visible,
+.dm-input:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 
 @media (pointer: coarse) {

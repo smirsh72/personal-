@@ -2251,12 +2251,12 @@ body {
 .chat-input:focus {
     outline: none;
     border-color: rgba(0, 0, 0, 0.3);
-    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+    box-shadow: none;
 }
 
 [data-theme="dark"] .chat-input:focus {
     border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+    box-shadow: none;
     background: #1a1a1a;
 }
 
@@ -2940,10 +2940,16 @@ body {
     font-size: 0.92rem;
 }
 
-:where(.site-name, .navbar-link, .theme-toggle, .social-icon, .dm-send, .send-button, .chat-input, .dm-input):focus-visible {
+:where(.site-name, .navbar-link, .theme-toggle, .social-icon, .dm-send, .send-button):focus-visible {
     outline: 2px solid var(--shared-focus-ring-color);
     outline-offset: 3px;
     border-radius: 0.6rem;
+}
+
+.chat-input:focus-visible,
+.dm-input:focus-visible {
+    outline: none;
+    box-shadow: none;
 }
 
 @media (pointer: coarse) {
