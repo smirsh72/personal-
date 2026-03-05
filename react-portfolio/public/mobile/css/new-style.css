@@ -2419,7 +2419,7 @@ body {
 
 @media (max-width: 768px) {
     .navbar-container {
-        padding: 0 1rem;
+        padding: calc(env(safe-area-inset-top) + 0.45rem) 1rem 0.35rem;
     }
     
     .site-logo {
@@ -2441,6 +2441,10 @@ body {
 }
 
 @media (max-width: 480px) {
+    .navbar-container {
+        padding: calc(env(safe-area-inset-top) + 0.6rem) 10px 0.35rem;
+    }
+
     .about-section {
         padding: 9.5rem 4% 4.5rem;
     }

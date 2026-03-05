@@ -1186,7 +1186,7 @@ body {
 
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0 1rem;
+    padding: calc(env(safe-area-inset-top) + 0.45rem) 1rem 0.35rem;
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -1283,6 +1283,10 @@ body {
 }
 
 @media (max-width: 480px) {
+  .navbar-container {
+    padding: calc(env(safe-area-inset-top) + 0.6rem) 0.75rem 0.35rem;
+  }
+
   .static-text {
     font-size: 16px;
   }
