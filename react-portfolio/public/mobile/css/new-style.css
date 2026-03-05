@@ -2299,24 +2299,27 @@ body {
     margin-top: 0.5rem;
 }
 
-/* Dark mode — gradient text to light lavender */
+/* Dark mode — neutral white text */
 [data-theme="dark"] .gradient-role {
-    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #f0f0f0;
+    color: #f0f0f0;
 }
 
 [data-theme="dark"] .gradient-text.highlight-text {
-    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #f0f0f0;
+    color: #f0f0f0;
 }
 
 [data-theme="dark"] .site-name {
-    background: linear-gradient(90deg, #E9D5FF 0%, #F5F3FF 50%, #E9D5FF 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: #f0f0f0;
+    color: #f0f0f0;
 }
