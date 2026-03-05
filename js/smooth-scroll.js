@@ -9,10 +9,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const navbarLinks = document.querySelectorAll('.navbar-link');
   const navbar = document.querySelector('.navbar');
   const entrySection = document.getElementById('about') || document.getElementById('hero');
+  if (!navbar) return;
+
   const getNavOffset = () => {
     const navHeight = navbar ? navbar.offsetHeight : 0;
     return navHeight + 12;
   };
+  const isMobileView = () => window.matchMedia('(max-width: 768px)').matches;
+  let lastScrollY = window.scrollY;
+  let navHidden = false;
+  let rafPending = false;
   
   // Check if we should scroll to hero section (coming back from Ghosted page)
   if (localStorage.getItem('scrollToHero') === 'true') {
@@ -58,22 +64,53 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Function to control header visibility based on scroll position
+  function setNavbarHidden(hidden) {
+    if (navHidden === hidden) return;
+    navHidden = hidden;
+    navbar.classList.toggle('navbar-hidden', hidden);
+  }
+
   function handleHeaderVisibility() {
-    if (!entrySection) return;
-    
-    const entryBottom = entrySection.getBoundingClientRect().bottom;
-    
-    // If we've scrolled past the hero section
-    if (entryBottom <= 0) {
-      navbar.classList.add('navbar-hidden');
-    } else {
-      navbar.classList.remove('navbar-hidden');
+    rafPending = false;
+    if (!entrySection) {
+      setNavbarHidden(false);
+      return;
     }
+
+    const currentScrollY = window.scrollY;
+    const entryBottom = entrySection.getBoundingClientRect().bottom;
+    const directionDown = currentScrollY > lastScrollY + 2;
+    const directionUp = currentScrollY < lastScrollY - 2;
+
+    // Keep desktop behavior stable; hide-on-scroll is mobile-only.
+    if (!isMobileView()) {
+      setNavbarHidden(false);
+      lastScrollY = currentScrollY;
+      return;
+    }
+
+    const passedEntry = entryBottom <= 24;
+    const nearEntry = entryBottom > 56;
+
+    if (directionUp || nearEntry) {
+      setNavbarHidden(false);
+    } else if (directionDown && passedEntry) {
+      setNavbarHidden(true);
+    }
+
+    lastScrollY = currentScrollY;
+  }
+
+  function onScroll() {
+    if (rafPending) return;
+    rafPending = true;
+    window.requestAnimationFrame(handleHeaderVisibility);
   }
   
   // Initial check for header visibility
   handleHeaderVisibility();
   
   // Check on scroll
-  window.addEventListener('scroll', handleHeaderVisibility);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', handleHeaderVisibility, { passive: true });
 });

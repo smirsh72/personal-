@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
 import { useReducedMotion } from '../hooks/useReducedMotion';
@@ -9,8 +9,9 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const isHiddenRef = useRef(false);
 
   // Check if mobile
   useEffect(() => {
@@ -23,32 +24,54 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-
       setIsScrolled(currentScrollY > 50);
 
-      // Hide navbar on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsHidden(true);
+      const entrySection = document.getElementById('about') || document.getElementById('hero');
+      const entryBottom = entrySection ? entrySection.getBoundingClientRect().bottom : Number.POSITIVE_INFINITY;
+      const directionDown = currentScrollY > lastScrollYRef.current + 2;
+      const directionUp = currentScrollY < lastScrollYRef.current - 2;
+      let nextHidden = isHiddenRef.current;
+
+      if (isMobile) {
+        const passedEntry = entryBottom <= 24;
+        const nearEntry = entryBottom > 56;
+        if (directionUp || nearEntry) {
+          nextHidden = false;
+        } else if (directionDown && passedEntry) {
+          nextHidden = true;
+        }
       } else {
-        setIsHidden(false);
+        if (directionDown && currentScrollY > 100) {
+          nextHidden = true;
+        } else if (directionUp || currentScrollY <= 100) {
+          nextHidden = false;
+        }
       }
 
-      setLastScrollY(currentScrollY);
+      if (nextHidden !== isHiddenRef.current) {
+        isHiddenRef.current = nextHidden;
+        setIsHidden(nextHidden);
+      }
+
+      lastScrollYRef.current = currentScrollY;
 
       // Determine active section
-      const sections = ['about', 'experience', 'certifications'];
-      for (const section of sections.reverse()) {
+      const sections = ['certifications', 'experience', 'about'];
+      for (const section of sections) {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
-          setActiveSection(section);
+          setActiveSection((prev) => (prev === section ? prev : section));
           break;
         }
       }
     };
 
+    lastScrollYRef.current = window.scrollY;
+    handleScroll();
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY, isMobile]);
+  }, [isMobile]);
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
