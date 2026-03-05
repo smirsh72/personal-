@@ -28,15 +28,15 @@ const getInitialMobile = () => {
 
 function ExperienceRow({ experience, index, reducedMotion, isMobile }) {
   const rowRef = useRef(null);
-  const isInView = useInView(rowRef, { once: true, margin: isMobile ? '0px' : '-50px' });
+  const isInView = useInView(rowRef, { once: true, margin: isMobile ? '-20px' : '-50px' });
 
   return (
     <motion.div
       ref={rowRef}
       className="exp-row"
-      initial={{ opacity: 0, y: reducedMotion || isMobile ? 0 : 16 }}
+      initial={{ opacity: 0, y: reducedMotion ? 0 : (isMobile ? 14 : 16) }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: reducedMotion ? 0.1 : 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ delay: index * 0.1, duration: reducedMotion ? 0.1 : (isMobile ? 0.45 : 0.5), ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <div className="about-divider" />
       <div className="exp-row-inner">
@@ -60,7 +60,7 @@ export default function Experience() {
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
-  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '200px' : '-100px' });
+  const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '100px' : '-100px' });
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -73,9 +73,9 @@ export default function Experience() {
       <div className="container">
         <motion.h2
           className="section-label"
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: reducedMotion ? 0 : 10 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: reducedMotion ? 0.1 : 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           Experience
         </motion.h2>

@@ -1261,8 +1261,14 @@ body {
   }
 
   .navbar-link {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 400;
+    padding: 0.4rem 0.55rem;
+  }
+
+  .site-name {
+    font-size: 1rem;
+    font-weight: 500;
   }
 
   .content {
@@ -1350,6 +1356,22 @@ body {
     padding: calc(env(safe-area-inset-top) + 0.6rem) 0.75rem 0.35rem;
   }
 
+  .site-name {
+    font-size: 0.94rem;
+    font-weight: 500;
+  }
+
+  .navbar-links {
+    gap: 0.7rem;
+  }
+
+  .navbar-link {
+    font-size: 0.74rem;
+    font-weight: 400;
+    padding: 0.36rem 0.45rem;
+    letter-spacing: 0;
+  }
+
   .static-text {
     font-size: 16px;
   }
@@ -1398,7 +1420,7 @@ body {
 /* Shared typography/background tokens (kept in sync with base + mobile CSS) */
 :root {
   --shared-section-image-opacity-light: 0.015;
-  --shared-section-image-opacity-dark: 0.025;
+  --shared-section-image-opacity-dark: 0.032;
   --shared-focus-ring-color: rgba(17, 24, 39, 0.82);
   --shared-tap-target-size: 44px;
   --shared-font-brand: var(--font-satoshi), sans-serif;

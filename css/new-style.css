@@ -2389,6 +2389,17 @@ body {
     .site-logo {
         gap: 0.5rem;
     }
+
+    .site-name {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .navbar-link {
+        font-size: 0.82rem;
+        font-weight: 400;
+        padding: 0.4rem 0.55rem;
+    }
     
     .about-section {
         padding: 10rem 4.5% 6.25rem;
@@ -2402,6 +2413,22 @@ body {
 @media (max-width: 480px) {
     .navbar-container {
         padding: calc(env(safe-area-inset-top) + 0.6rem) 10px 0.35rem;
+    }
+
+    .site-name {
+        font-size: 0.94rem;
+        font-weight: 500;
+    }
+
+    .navbar-links {
+        gap: 0.7rem;
+    }
+
+    .navbar-link {
+        font-size: 0.74rem;
+        font-weight: 400;
+        padding: 0.36rem 0.45rem;
+        letter-spacing: 0;
     }
 
     .about-section {
@@ -2702,7 +2729,7 @@ body {
 /* Shared typography/background tokens (kept in sync with React + mobile CSS) */
 :root {
     --shared-section-image-opacity-light: 0.015;
-    --shared-section-image-opacity-dark: 0.025;
+    --shared-section-image-opacity-dark: 0.032;
     --shared-focus-ring-color: rgba(17, 24, 39, 0.82);
     --shared-tap-target-size: 44px;
     --shared-font-brand: var(--font-satoshi), sans-serif;
