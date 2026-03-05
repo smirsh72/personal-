@@ -54,7 +54,7 @@ function AIChat({ reducedMotion }) {
     const timer = setTimeout(() => {
       setMessages([{
         id: 1,
-        content: "Hi there! I'm Shan's AI assistant. Ask me anything about Shan!",
+        content: "what's up. ask me anything about shan.",
         isUser: false,
       }]);
     }, 1000);
@@ -102,8 +102,8 @@ function AIChat({ reducedMotion }) {
   return (
     <div className="ai-chat-container">
       <div className="chat-header">
-        <h3 className="chat-title">Chat with Shan's AI</h3>
-        <p className="chat-subtitle">Ask anything about my work or what I'm building</p>
+        <h3 className="chat-title">Shan's AI</h3>
+        <p className="chat-subtitle">Ask it anything.</p>
       </div>
       <div className="chat-messages" ref={chatContainerRef}>
         <AnimatePresence>

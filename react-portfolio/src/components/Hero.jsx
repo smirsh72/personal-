@@ -41,7 +41,7 @@ export default function Hero() {
             animate={mounted ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: reducedMotion ? 0 : 0.2, duration: reducedMotion ? 0.1 : 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            Product Manager · Engineer · Builder
+            I just build stuff.
           </motion.p>
         </div>
       </div>

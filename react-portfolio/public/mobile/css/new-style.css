@@ -434,6 +434,23 @@ body {
     transition: opacity var(--transition-medium) ease;
 }
 
+/* Cairo painting texture — dark mode only */
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/cairo-painting.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: 0.02;
+    z-index: 0;
+    pointer-events: none;
+}
+
+[data-theme="dark"] .hero::before {
+    opacity: 0.04;
+}
+
 /* Background Layers */
 .background-layer {
     position: absolute;

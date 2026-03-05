@@ -348,8 +348,8 @@ document.addEventListener('DOMContentLoaded', function() {
     education: "I have a strong background in computer science with specialized knowledge in AI and cloud technologies from the University of Texas at Dallas.",
     
     // Default responses
-    greeting: ["Hi there! I'm Shan's AI assistant. Ask me anything about his technical background or projects.", "Hello! What would you like to know about Shan's technical skills and experience?", "Hey there! Feel free to ask me anything about Shan's cloud expertise or AI projects."],
-    default: "I'm Shan's AI assistant. I can tell you about his technical background as a Cloud Architect, AI Engineer, and Technical Product Manager. What would you like to know?",
+    greeting: ["hey. ask me anything about shan.", "what's up. i know everything about shan — ask away.", "hey, what do you want to know?"],
+    default: "not sure i caught that. ask me about shan's projects, background, or what he's building.",
     contact: "You can reach Shan through LinkedIn or via email. Check out the links in the navigation menu for his professional profiles!",
     cloud: "Shan has extensive experience with cloud technologies, particularly AWS. He's built infrastructure as code using Terraform, implemented CI/CD pipelines, and developed cloud-native applications. He automated EC2/S3 provisioning using Terraform IaC and built CI/CD pipelines with Jenkins.",
     ai: "Shan is passionate about AI and its applications. He built Ghosted, an AI-native cloud automation platform, developed a Copilot-style AI assistant at Mastercard that reduced incident triage time by 40%, and implemented ML detection algorithms analyzing 100k+ log events in real-time."
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Add welcome message
   function addWelcomeMessage() {
     setTimeout(() => {
-      addMessage("Hi there! I'm Shan's AI assistant. Ask me anything about Shan!");
+      addMessage("what's up. ask me anything about shan.");
     }, 800);
   }
   
