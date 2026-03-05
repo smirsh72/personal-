@@ -568,7 +568,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    padding-bottom: 5rem; /* Make room for scroll indicator */
+    padding-bottom: 0;
 }
 
 /* Intro Sequence */
@@ -593,18 +593,20 @@ body {
 
 .hero-subline {
     display: block;
-    font-family: 'Satoshi', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.4rem);
-    font-weight: 500;
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    font-size: clamp(0.92rem, 1.7vw, 1.12rem);
+    font-weight: 400;
     color: var(--text-secondary);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     margin-top: 0.75rem;
 }
+
 
 /* Hero section text styles */
 .hero-text {
     font-family: 'Satoshi', sans-serif;
     font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 0.2rem;
     text-align: center;
@@ -612,8 +614,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    letter-spacing: -0.03em;
-    line-height: 1;
+    letter-spacing: -0.018em;
+    line-height: 1.05;
     width: 100%;
 }
 
@@ -1305,7 +1307,8 @@ body {
         text-align: center;
         align-items: center;
         font-size: clamp(2.5rem, 8vw, 5rem);
-        line-height: 1.1;
+        font-weight: 600;
+        line-height: 1.05;
     }
     
     #changing-word {
@@ -1505,12 +1508,11 @@ body {
 
 .project-desc {
     color: var(--text-primary);
-    opacity: 0.85;
 }
 
 .project-desc strong {
     font-weight: 600;
-    opacity: 1;
+    letter-spacing: -0.01em;
 }
 
 .about-personal {
@@ -1522,23 +1524,42 @@ body {
 /* Social Icons */
 .social-icons-container {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
 }
 
 .social-icon {
     color: var(--text-secondary);
-    font-size: 1rem;
-    padding: 0.4rem;
-    display: flex;
+    font-size: 0.86rem;
+    width: 1.9rem;
+    height: 1.9rem;
+    padding: 0;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s ease;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 9999px;
+    opacity: 0.82;
+    transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
     text-decoration: none;
+}
+
+[data-theme="dark"] .social-icon {
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+.social-icon i {
+    line-height: 1;
 }
 
 .social-icon:hover {
     color: var(--text-primary);
+    opacity: 1;
+    border-color: rgba(0, 0, 0, 0.24);
+}
+
+[data-theme="dark"] .social-icon:hover {
+    border-color: rgba(255, 255, 255, 0.32);
 }
 
 /* Experience Section Styles */
@@ -1835,8 +1856,8 @@ body {
 
 .highlight-text {
     font-size: 1.125rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    font-weight: 500;
+    letter-spacing: -0.006em;
 }
 
 .gradient-text {
@@ -2427,4 +2448,418 @@ body {
     background-clip: unset;
     -webkit-text-fill-color: #f0f0f0;
     color: #f0f0f0;
+}
+
+/* React-aligned Experience + Certifications layout */
+.experience-section,
+.certifications-section {
+    background-color: var(--bg-primary);
+    padding: 6rem 0;
+    transition: background-color 0.4s ease;
+}
+
+.section-label {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.exp-list {
+    max-width: 800px;
+}
+
+.exp-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-row-inner {
+    display: flex;
+    gap: 2.5rem;
+    padding: 1.75rem 0;
+    align-items: flex-start;
+}
+
+.exp-date {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    min-width: 7rem;
+    flex-shrink: 0;
+    padding-top: 0.15rem;
+}
+
+.exp-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.exp-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.exp-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.exp-company {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.exp-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    border-radius: 3px;
+    opacity: 0.7;
+}
+
+.exp-company-name {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.exp-description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.cert-title-link {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: opacity 0.2s ease;
+}
+
+.cert-title-link:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    .experience-section,
+    .certifications-section {
+        padding: 6rem 5%;
+    }
+}
+
+/* React-aligned About chatbox (DM style) */
+.status-dot {
+    animation: none;
+    background-color: #10B981;
+}
+
+.status-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--text-secondary);
+}
+
+.dm-container {
+    display: flex;
+    flex-direction: column;
+    height: 420px;
+    width: 100%;
+    max-height: 420px;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+[data-theme="dark"] .dm-container {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+.dm-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    background: none;
+}
+
+.dm-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+[data-theme="dark"] .dm-messages {
+    background: none;
+}
+
+.dm-input:focus {
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+[data-theme="dark"] .dm-input {
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+[data-theme="dark"] .dm-input:focus {
+    border: none;
+    box-shadow: none;
+    background: none;
+}
+
+.dm-messages::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.3);
+}
+
+.dm-message,
+.dm-typing {
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+}
+
+.dm-label {
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+    min-width: 1.8rem;
+    flex-shrink: 0;
+}
+
+.dm-ai .dm-label {
+    opacity: 0.6;
+}
+
+.dm-user .dm-label {
+    opacity: 0.4;
+}
+
+.dm-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+.dm-user .dm-text {
+    opacity: 0.6;
+}
+
+.dm-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: none;
+}
+
+[data-theme="dark"] .dm-input-row {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dm-input {
+    flex: 1;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.dm-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.dm-send {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    padding: 0;
+    margin: 0;
+    width: auto;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.dm-send:hover {
+    color: var(--text-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Shared typography/background tokens (kept in sync with React + base CSS) */
+:root {
+    --shared-section-image-opacity-light: 0.015;
+    --shared-section-image-opacity-dark: 0.025;
+    --shared-focus-ring-color: rgba(17, 24, 39, 0.82);
+    --shared-tap-target-size: 44px;
+    --shared-font-brand: var(--font-satoshi), sans-serif;
+    --shared-font-mono: 'Roboto Mono', 'Courier New', monospace;
+    --shared-font-body: var(--font-primary), sans-serif;
+}
+
+:root[data-theme="dark"] {
+    --shared-focus-ring-color: rgba(240, 240, 240, 0.9);
+}
+
+.about-section,
+.experience-section,
+.certifications-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before,
+.experience-section::before,
+.certifications-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/cairo-painting.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    opacity: var(--shared-section-image-opacity-light);
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+[data-theme="dark"] .about-section::before,
+[data-theme="dark"] .experience-section::before,
+[data-theme="dark"] .certifications-section::before {
+    opacity: var(--shared-section-image-opacity-dark);
+}
+
+.about-section > .container,
+.experience-section > .container,
+.certifications-section > .container {
+    position: relative;
+    z-index: 1;
+}
+
+.site-name,
+.navbar-link,
+.hero-text,
+.about-name,
+.exp-title,
+.cert-title-link,
+.project-desc strong {
+    font-family: var(--shared-font-brand);
+}
+
+.hero-subline,
+.section-label,
+.project-label,
+.exp-date,
+.dm-label {
+    font-family: var(--shared-font-mono);
+}
+
+.about-handle,
+.about-personal,
+.status-text,
+.exp-description,
+.dm-text {
+    font-family: var(--shared-font-body);
+}
+
+.site-name {
+    font-weight: 500;
+    letter-spacing: -0.006em;
+}
+
+.navbar-link {
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.hero-text {
+    font-weight: 500;
+    letter-spacing: -0.012em;
+}
+
+.hero-subline {
+    font-weight: 400;
+    letter-spacing: 0.005em;
+}
+
+.about-name {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+}
+
+.status-text {
+    font-size: 0.74rem;
+    letter-spacing: 0.01em;
+}
+
+.dm-text,
+.exp-description {
+    font-size: 0.92rem;
+}
+
+:where(.site-name, .navbar-link, .theme-toggle, .social-icon, .dm-send, .send-button, .chat-input, .dm-input):focus-visible {
+    outline: 2px solid var(--shared-focus-ring-color);
+    outline-offset: 3px;
+    border-radius: 0.6rem;
+}
+
+@media (pointer: coarse) {
+    .navbar-link,
+    .theme-toggle,
+    .social-icon,
+    .dm-send,
+    .send-button {
+        min-height: var(--shared-tap-target-size);
+    }
+
+    .theme-toggle,
+    .social-icon,
+    .dm-send,
+    .send-button {
+        min-width: var(--shared-tap-target-size);
+    }
 }

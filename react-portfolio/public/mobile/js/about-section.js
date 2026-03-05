@@ -378,25 +378,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Add welcome message
   function addWelcomeMessage() {
-    setTimeout(() => {
-      addMessage("what's up. ask me anything about shan.");
-    }, 800);
+    addMessage("what's up. ask me anything about shan.");
   }
   
-  // Delay chat initialization to prevent competing with about section animations
-  setTimeout(() => {
-    // Initialize chat with welcome message
-    addWelcomeMessage();
-    
-    // Check backend connection on startup
-    checkBackendConnection().then(connected => {
-      if (connected) {
-        console.log('✅ Backend connection established on startup');
-      } else {
-        console.warn('⚠️ Backend connection failed on startup, will use hardcoded responses');
-      }
-    });
-  }, 3000); // 3 second delay - increased for better separation from animations
+  // Initialize chat immediately
+  addWelcomeMessage();
+
+  // Check backend connection on startup
+  checkBackendConnection().then(connected => {
+    if (connected) {
+      console.log('✅ Backend connection established on startup');
+    } else {
+      console.warn('⚠️ Backend connection failed on startup, will use hardcoded responses');
+    }
+  });
   
   // Check if the user message matches any hardcoded response keywords
   function matchHardcodedResponse(message) {
@@ -653,15 +648,20 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function addMessage(content, isUser = false) {
     const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isUser ? 'user-message' : 'assistant-message');
+    messageDiv.classList.add('dm-message');
+    messageDiv.classList.add(isUser ? 'dm-user' : 'dm-ai');
     messageDiv.style.opacity = '0';
-    messageDiv.style.transform = 'translateY(10px)';
-    
-    const messageContent = document.createElement('div');
-    messageContent.classList.add('message-content');
+    messageDiv.style.transform = 'translateY(8px)';
+
+    const label = document.createElement('span');
+    label.classList.add('dm-label');
+    label.textContent = isUser ? 'you' : 'ai';
+
+    const messageContent = document.createElement('span');
+    messageContent.classList.add('dm-text');
     messageContent.textContent = content;
-    
+
+    messageDiv.appendChild(label);
     messageDiv.appendChild(messageContent);
     chatMessages.appendChild(messageDiv);
     
@@ -681,8 +681,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Typing indicator
   function showTypingIndicator() {
     const typingDiv = document.createElement('div');
-    typingDiv.classList.add('message', 'assistant-message', 'typing-indicator');
-    typingDiv.innerHTML = '<div class="typing-dots"><span></span><span></span><span></span></div>';
+    typingDiv.classList.add('dm-typing');
+    typingDiv.innerHTML = '<span class="dm-label">ai</span><span class="dm-text">...</span>';
     chatMessages.appendChild(typingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return typingDiv;
@@ -761,38 +761,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // Focus the input field when clicking anywhere in the chat container
-  document.querySelector('.ai-chat-container').addEventListener('click', function() {
+  document.querySelector('.dm-container').addEventListener('click', function() {
     chatInput.focus();
   });
-  
-  // Add CSS for typing indicator
-  const style = document.createElement('style');
-  style.textContent = `
-    .typing-indicator {
-      padding: 0.5rem 1rem;
-    }
-    .typing-dots {
-      display: flex;
-      gap: 4px;
-    }
-    .typing-dots span {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background-color: #9CA3AF;
-      display: inline-block;
-      animation: typingAnimation 1.4s infinite ease-in-out both;
-    }
-    .typing-dots span:nth-child(1) {
-      animation-delay: -0.32s;
-    }
-    .typing-dots span:nth-child(2) {
-      animation-delay: -0.16s;
-    }
-    @keyframes typingAnimation {
-      0%, 80%, 100% { transform: scale(0.6); }
-      40% { transform: scale(1); }
-    }
-  `;
-  document.head.appendChild(style);
 });

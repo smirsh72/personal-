@@ -95,7 +95,7 @@ function SocialIcon({ href, icon, label, delay, reducedMotion }) {
       initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: reducedMotion ? 0 : delay, duration: 0.4 }}
-      whileHover={reducedMotion ? {} : { scale: 1.2 }}
+      whileHover={reducedMotion ? {} : { scale: 1.06 }}
       whileTap={reducedMotion ? {} : { scale: 0.9 }}
     >
       <i className={icon} />
@@ -164,6 +164,11 @@ export default function About() {
         <div className="about-identity-text">
           <span className="about-name">Shan Irshad</span>
           <span className="about-handle">learning</span>
+          <div className="social-icons-container">
+            <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
+            <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
+            <SocialIcon href="tel:+14695449186" icon="fas fa-phone" label="Phone" delay={0.8} reducedMotion={!animate} />
+          </div>
         </div>
       </div>
 
@@ -188,12 +193,6 @@ export default function About() {
       {/* Personal */}
       <p className="about-personal">liverpool fc 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
 
-      {/* Socials */}
-      <div className="social-icons-container">
-        <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
-        <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
-        <SocialIcon href="tel:+14695449186" icon="fas fa-phone-alt" label="Phone" delay={0.8} reducedMotion={!animate} />
-      </div>
     </div>
   );
 

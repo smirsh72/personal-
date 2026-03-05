@@ -43,7 +43,6 @@
     <link rel="stylesheet" href="css/animations.css">
     <!-- System font override for terminal animation -->
     <link rel="stylesheet" href="css/system-font-fix.css">
-    <link rel="stylesheet" href="css/certifications.css">
     <link rel="stylesheet" href="css/bullet-list.css">
     <!-- Google Fonts - Scale AI inspired theme -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,12 +94,6 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div id="scroll-indicator" class="scroll-indicator subtle-indicator">
-            <div class="scroll-arrow"></div>
-            <span class="scroll-text">Scroll</span>
-        </div>
     </section>
 
     <!-- About Me Section -->
@@ -114,6 +107,17 @@
                         <div class="about-identity-text">
                             <span class="about-name">Shan Irshad</span>
                             <span class="about-handle">learning</span>
+                            <div class="social-icons-container">
+                                <a href="https://www.linkedin.com/in/shan-irshad/" target="_blank" class="social-icon" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="mailto:shanirshad8@gmail.com" class="social-icon" aria-label="Email">
+                                    <i class="far fa-envelope"></i>
+                                </a>
+                                <a href="tel:+14695449186" class="social-icon" aria-label="Phone">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -137,18 +141,6 @@
 
                     <p class="about-personal">liverpool fc 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
 
-                    <!-- Social Icons -->
-                    <div class="social-icons-container">
-                        <a href="https://www.linkedin.com/in/shan-irshad/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="mailto:shanirshad8@gmail.com" class="social-icon" aria-label="Email">
-                            <i class="far fa-envelope"></i>
-                        </a>
-                        <a href="tel:+14695449186" class="social-icon" aria-label="Phone">
-                            <i class="fas fa-phone-alt"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="about-right-column reveal-element" data-delay="300">
                     <!-- AI Status Badge -->
@@ -156,19 +148,13 @@
                         <span class="status-dot"></span>
                         <span class="status-text">shan.ai · online</span>
                     </div>
-                    <div class="ai-chat-container">
-                        <div class="chat-header">
-                            <h3 class="chat-title">Shan's AI</h3>
-                            <p class="chat-subtitle">Ask it anything.</p>
-                        </div>
-                        <div id="chat-messages" class="chat-messages">
+                    <div class="ai-chat-container dm-container">
+                        <div id="chat-messages" class="chat-messages dm-messages">
                             <!-- Messages will be added here by JavaScript -->
                         </div>
-                        <div class="chat-input-container">
-                            <input type="text" id="chat-input" class="chat-input" placeholder="Ask me anything...">
-                            <button id="send-button" class="send-button">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
+                        <div class="chat-input-container dm-input-row">
+                            <input type="text" id="chat-input" class="chat-input dm-input" placeholder="type something...">
+                            <button id="send-button" class="send-button dm-send">→</button>
                         </div>
                     </div>
                 </div>
@@ -179,46 +165,43 @@
     <!-- Experience Section -->
     <section id="experience" class="modern-section experience-section">
         <div class="container">
-            <h2 class="section-subtitle text-center"><span class="section-title-gradient">Experience</span></h2>
-            
-            <div class="experience-cards">
-                <!-- Mastercard Experience Card -->
-                <div class="experience-card reveal-element" data-delay="100">
-                    <div class="experience-card-content">
-                        <div class="company-logo-wrapper">
-                            <div class="company-logo-container">
-                                <img src="https://shanirshad.com/images/mastercard-logo.png" alt="Mastercard logo" class="company-logo">
+            <h2 class="section-label">Experience</h2>
+
+            <div class="exp-list">
+                <div class="exp-row">
+                    <div class="about-divider"></div>
+                    <div class="exp-row-inner">
+                        <span class="exp-date">Summer 2025</span>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <span class="exp-title">Site Reliability Engineer</span>
+                                <div class="exp-company">
+                                    <img src="https://shanirshad.com/images/mastercard-logo.png" alt="Mastercard" class="exp-logo">
+                                    <span class="exp-company-name">Mastercard</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="experience-details">
-                            <div class="experience-header">
-                                <h3 class="experience-title"><span class="gradient-role">Site Reliability Engineer</span></h3>
-                                <p class="experience-company">@ Mastercard</p>
-                                <span class="experience-date-pill">Summer 2025</span>
-                            </div>
-                            <p class="experience-description">Worked on distributed file transfer systems and cloud infrastructure reliability, building AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automation of infrastructure provisioning to improve deployment speed and operational visibility.</p>
+                            <p class="exp-description">Built AI tooling for incident triage and anomaly detection across large-scale log data. Automated infra provisioning to improve deployment speed and operational visibility.</p>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Nutrify AI Experience Card -->
-                <div class="experience-card reveal-element" data-delay="200">
-                    <div class="experience-card-content">
-                        <div class="company-logo-wrapper">
-                            <div class="company-logo-container">
-                                <img src="https://shanirshad.com/images/nutrify-logo.jpeg" alt="Nutrify AI logo" class="company-logo">
+
+                <div class="exp-row">
+                    <div class="about-divider"></div>
+                    <div class="exp-row-inner">
+                        <span class="exp-date">Spring 2025</span>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <span class="exp-title">Product Manager</span>
+                                <div class="exp-company">
+                                    <img src="https://shanirshad.com/images/nutrify-logo.jpeg" alt="Nutrify AI" class="exp-logo">
+                                    <span class="exp-company-name">Nutrify AI</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="experience-details">
-                            <div class="experience-header">
-                                <h3 class="experience-title"><span class="gradient-role">Product Manager</span></h3>
-                                <p class="experience-company">@ Nutrify AI</p>
-                                <span class="experience-date-pill">Spring 2025</span>
-                            </div>
-                            <p class="experience-description">Worked on multimodal AI features across conversational LLM and computer vision capabilities, leading development of an AI nutrition platform focused on personalization, engagement, and scalable product architecture.</p>
+                            <p class="exp-description">Led multimodal AI features — conversational LLM and computer vision — for an AI nutrition platform focused on personalization and scalable architecture.</p>
                         </div>
                     </div>
                 </div>
+                <div class="about-divider"></div>
             </div>
         </div>
     </section>
@@ -226,42 +209,39 @@
     <!-- Certifications Section -->
     <section id="certifications" class="modern-section certifications-section">
         <div class="container">
-            <h2 class="section-subtitle text-center"><span class="section-title-gradient">Certifications</span></h2>
-            
-            <div class="certifications-container">
-                <!-- Azure Administrator Certification -->
-                <div class="certification-card reveal-element" data-delay="100">
-                    <div class="certification-badge-container">
-                        <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-associate-badge.svg" alt="Microsoft Azure Administrator Associate" class="certification-badge">
-                        <div class="certification-hover-info">
-                            <h4>Azure Administrator</h4>
-                            <p>Managing Azure resources & infrastructure</p>
-                            <span class="certification-date">February 2025</span>
+            <h2 class="section-label">Certifications</h2>
+
+            <div class="exp-list">
+                <div class="exp-row">
+                    <div class="about-divider"></div>
+                    <div class="exp-row-inner">
+                        <span class="exp-date">Feb 2025</span>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" rel="noopener noreferrer" class="cert-title-link">
+                                    Microsoft Azure Administrator ↗
+                                </a>
+                            </div>
+                            <p class="exp-description">Managing Azure resources, identity, governance, storage, compute, and virtual networks.</p>
                         </div>
                     </div>
-                    <div class="certification-details">
-                        <h3 class="certification-title">Microsoft <span class="gradient-role">Azure Administrator</span></h3>
-                        <span class="experience-date-pill">February 2025</span>
-                        <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/5f29ed6b13d6e248?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" class="certification-link"><i class="fas fa-external-link-alt"></i> View Certification</a>
-                    </div>
                 </div>
-                
-                <!-- Azure Fundamentals Certification -->
-                <div class="certification-card reveal-element" data-delay="200">
-                    <div class="certification-badge-container">
-                        <img src="https://learn.microsoft.com/en-us/media/learn/certification/badges/microsoft-certified-fundamentals-badge.svg" alt="Microsoft Azure Fundamentals" class="certification-badge">
-                        <div class="certification-hover-info">
-                            <h4>Azure Fundamentals</h4>
-                            <p>Cloud concepts & Azure basics</p>
-                            <span class="certification-date">July 2024</span>
+
+                <div class="exp-row">
+                    <div class="about-divider"></div>
+                    <div class="exp-row-inner">
+                        <span class="exp-date">Jul 2024</span>
+                        <div class="exp-body">
+                            <div class="exp-header">
+                                <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/492a6cf91ff5ff73" target="_blank" rel="noopener noreferrer" class="cert-title-link">
+                                    Microsoft Azure Fundamentals ↗
+                                </a>
+                            </div>
+                            <p class="exp-description">Cloud concepts, Azure services, workloads, security, privacy, and pricing.</p>
                         </div>
                     </div>
-                    <div class="certification-details">
-                        <h3 class="certification-title">Microsoft <span class="gradient-role">Azure Fundamentals</span></h3>
-                        <span class="experience-date-pill">July 2024</span>
-                        <a href="https://learn.microsoft.com/en-us/users/irshadshanmikael-1967/credentials/492a6cf91ff5ff73" target="_blank" class="certification-link"><i class="fas fa-external-link-alt"></i> View Certification</a>
-                    </div>
                 </div>
+                <div class="about-divider"></div>
             </div>
         </div>
     </section>
