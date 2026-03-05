@@ -1660,7 +1660,7 @@ body {
 }
 
 .experience-section::before {
-    display: none;
+    display: block;
 }
 
 .section-subtitle {
