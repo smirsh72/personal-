@@ -117,6 +117,7 @@ export default function About() {
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
+  const [imgHovered, setImgHovered] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -158,9 +159,11 @@ export default function About() {
         <img
           src="/images/profile-pic.jpg"
           alt="Shan Irshad"
-          className="profile-image-circle"
+          className={`profile-image-circle${imgHovered ? ' profile-image-hovered' : ''}`}
           loading="eager"
           decoding="async"
+          onMouseEnter={() => setImgHovered(true)}
+          onMouseLeave={() => setImgHovered(false)}
         />
         <div className="about-identity-text">
           <span className="about-name">Shan Irshad</span>

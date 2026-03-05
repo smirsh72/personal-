@@ -691,6 +691,61 @@ body {
   margin-top: 0.75rem;
 }
 
+/* Hero Profile Image */
+.hero-profile-wrapper {
+  margin-bottom: 1.75rem;
+  cursor: default;
+}
+
+.hero-profile-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  filter: grayscale(100%);
+  transform: scale(1);
+  transition: filter 0.5s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 0 1px var(--border-color);
+  display: block;
+}
+
+.hero-profile-image.hovered {
+  filter: grayscale(0%);
+  transform: scale(1.06);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15), 0 0 0 2px var(--border-color);
+}
+
+/* Hero Scroll Indicator */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hero-scroll-text {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--text-secondary);
+  opacity: 0.5;
+  text-transform: lowercase;
+}
+
+.hero-scroll-arrow {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  opacity: 0.45;
+  display: block;
+}
+
 .word-carousel-container {
   display: flex;
   justify-content: center;
@@ -765,6 +820,14 @@ body {
   object-position: center 35%;
   flex-shrink: 0;
   border: 2px solid rgba(0,0,0,0.08);
+  transform: scale(1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: default;
+}
+
+.profile-image-circle.profile-image-hovered {
+  transform: scale(1.04);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="dark"] .profile-image-circle {
