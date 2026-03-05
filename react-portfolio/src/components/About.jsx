@@ -160,21 +160,6 @@ function SocialIcon({ href, icon, label, delay, reducedMotion }) {
   );
 }
 
-// Exploring tag component
-function ExploringTag({ children, delay, reducedMotion }) {
-  return (
-    <motion.span
-      className="exploring-tag"
-      initial={{ opacity: 0, scale: reducedMotion ? 1 : 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: reducedMotion ? 0 : delay, duration: 0.4 }}
-      whileHover={reducedMotion ? {} : { scale: 1.04 }}
-      whileTap={reducedMotion ? {} : { scale: 0.97 }}
-    >
-      {children}
-    </motion.span>
-  );
-}
 
 // Check if mobile on initial render (SSR-safe)
 const getInitialMobile = () => {
@@ -222,53 +207,64 @@ export default function About() {
     },
   };
 
+  const profileContent = (animate) => (
+    <div className="about-left-column">
+      {/* Identity block */}
+      <div className="about-identity">
+        <img
+          src="/images/profile-pic.jpg"
+          alt="Shan Irshad"
+          className="profile-image-circle"
+          loading="eager"
+          decoding="async"
+        />
+        <div className="about-identity-text">
+          <span className="about-name">Shan Irshad</span>
+          <span className="about-handle">learning</span>
+        </div>
+      </div>
+
+      <div className="about-divider" />
+
+      {/* Bio */}
+      <p className="about-bio">
+        Always learning.
+      </p>
+
+      {/* Projects */}
+      <div className="about-projects">
+        <div className="about-project-row">
+          <span className="project-label">now</span>
+          <span className="project-arrow">→</span>
+          <span className="project-desc"><strong>Prismo</strong> — AI routing layer for cost, reliability &amp; governance.</span>
+        </div>
+        <div className="about-project-row">
+          <span className="project-label">before</span>
+          <span className="project-arrow">→</span>
+          <span className="project-desc"><strong>Ghosted</strong> — deploy cloud infra with plain English.</span>
+        </div>
+      </div>
+
+      <div className="about-divider" />
+
+      {/* Personal */}
+      <p className="about-personal">Liverpool FC 🔴 &nbsp;·&nbsp; gym &nbsp;·&nbsp; shipping</p>
+
+      {/* Socials */}
+      <div className="social-icons-container">
+        <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
+        <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
+        <SocialIcon href="tel:+14695449186" icon="fas fa-phone-alt" label="Phone" delay={0.8} reducedMotion={!animate} />
+      </div>
+    </div>
+  );
+
   if (isMobile) {
     return (
       <section id="about" className="modern-section about-section" ref={sectionRef}>
         <div className="container">
-          <h2 className="section-subtitle text-center">
-            <span className="section-title-gradient">About Me</span>
-          </h2>
           <div className="about-grid">
-            <div className="about-left-column">
-              <div className="profile-image-wrapper">
-                <img
-                  src="/images/profile-pic.jpg"
-                  alt="Shan Irshad"
-                  className="profile-image"
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                />
-              </div>
-              <div className="about-content">
-                <div className="about-text">
-                  <p className="intro-paragraph">
-                    Hi, I'm <span className="gradient-text highlight-text">Shan</span>. I build the tools I wish existed.
-                  </p>
-                  <p className="secondary-paragraph">
-                    Right now I'm building <span className="gradient-text highlight-text">Prismo</span>, an AI routing layer for cost, reliability, and governance. Before that I built <span className="gradient-text highlight-text">Ghosted</span>, which lets you deploy cloud infrastructure using plain English.
-                  </p>
-                  <p className="secondary-paragraph">
-                    Liverpool FC 🔴 and the gym when I'm not shipping.
-                  </p>
-                </div>
-                <div className="exploring-section">
-                  <h3 className="exploring-title">Currently building</h3>
-                  <div className="exploring-tags">
-                    <ExploringTag delay={0} reducedMotion={true}>Prismo — AI routing & cost optimization</ExploringTag>
-                  </div>
-                </div>
-                <p className="ai-prompt">
-                  Ask my AI anything below.
-                </p>
-                <div className="social-icons-container">
-                  <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0} reducedMotion={true} />
-                  <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0} reducedMotion={true} />
-                  <SocialIcon href="tel:+14695449186" icon="fas fa-phone-alt" label="Phone" delay={0} reducedMotion={true} />
-                </div>
-              </div>
-            </div>
+            {profileContent(false)}
             <div className="about-right-column">
               <div className="ai-status-badge">
                 <span className="status-dot" />
@@ -282,74 +278,19 @@ export default function About() {
     );
   }
 
-  // Desktop: full animations
   return (
     <section id="about" className="modern-section about-section" ref={sectionRef}>
       <div className="container">
-        <motion.h2
-          className="section-subtitle text-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="section-title-gradient">About Me</span>
-        </motion.h2>
         <motion.div
           className="about-grid"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          {/* Left column */}
-          <motion.div className="about-left-column" variants={itemVariants}>
-            <motion.div
-              className="profile-image-wrapper"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.img
-                src="/images/profile-pic.jpg"
-                alt="Shan Irshad"
-                className="profile-image"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.8, ease: 'easeOut' }}
-              />
-            </motion.div>
-
-            <div className="about-content">
-              <motion.div className="about-text" variants={itemVariants}>
-                <motion.p className="intro-paragraph" variants={itemVariants}>
-                  Hi, I'm <span className="gradient-text highlight-text">Shan</span>. I build the tools I wish existed.
-                </motion.p>
-                <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  Right now I'm building <span className="gradient-text highlight-text">Prismo</span>, an AI routing layer for cost, reliability, and governance. Before that I built <span className="gradient-text highlight-text">Ghosted</span>, which lets you deploy cloud infrastructure using plain English.
-                </motion.p>
-                <motion.p className="secondary-paragraph" variants={itemVariants}>
-                  Liverpool FC 🔴 and the gym when I'm not shipping.
-                </motion.p>
-              </motion.div>
-
-              <motion.div className="exploring-section" variants={itemVariants}>
-                <h3 className="exploring-title">Currently building</h3>
-                <div className="exploring-tags">
-                  <ExploringTag delay={0.3} reducedMotion={reducedMotion}>Prismo — AI routing & cost optimization</ExploringTag>
-                </div>
-              </motion.div>
-
-              <motion.p className="ai-prompt" variants={itemVariants}>
-                Ask my AI anything below.
-              </motion.p>
-
-              <motion.div className="social-icons-container" variants={itemVariants}>
-                <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={reducedMotion} />
-                <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={reducedMotion} />
-                <SocialIcon href="tel:+14695449186" icon="fas fa-phone-alt" label="Phone" delay={0.8} reducedMotion={reducedMotion} />
-              </motion.div>
-            </div>
+          <motion.div variants={itemVariants}>
+            {profileContent(true)}
           </motion.div>
 
-          {/* Right column - AI Chat */}
           <motion.div className="about-right-column" variants={itemVariants}>
             <motion.div
               className="ai-status-badge"
