@@ -1,11 +1,11 @@
 {
-  "name": "Shan Irshad - Portfolio",
-  "short_name": "Shan Irshad",
+  "name": "shan irshad",
+  "short_name": "shan irshad",
   "icons": [
     {
-      "src": "favicon/favicon.jpeg",
+      "src": "/favicon.png?v=2",
       "sizes": "64x64",
-      "type": "image/jpeg"
+      "type": "image/png"
     }
   ],
   "theme_color": "#000000",
