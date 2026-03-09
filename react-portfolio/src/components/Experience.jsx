@@ -5,7 +5,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 const experiences = [
   {
     id: 1,
-    title: 'Site Reliability Engineer',
+    title: 'Site Reliability Engineer / BizOps',
     company: 'Mastercard',
     date: 'Summer 2025',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',

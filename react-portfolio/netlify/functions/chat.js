@@ -19,7 +19,7 @@ About Shan:
 - Interested in AI infrastructure, platform products, scalable systems, and product strategy
 
 Experience:
-- Site Reliability Engineer at Mastercard (Summer 2025): worked on distributed file transfer systems and cloud infrastructure reliability, built AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automated infrastructure provisioning
+- Site Reliability Engineer / BizOps at Mastercard (Summer 2025): worked on distributed file transfer systems and cloud infrastructure reliability, built AI-assisted tooling for incident triage, anomaly detection across large-scale log data, and automated infrastructure provisioning
 - Product Manager at Nutrify AI (Spring 2025): worked on multimodal AI features across conversational LLM and computer vision capabilities, led development of an AI nutrition platform focused on personalization, engagement, and scalable product architecture
 
 Education:

@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
     portfolio: "This website is my portfolio! I built it to showcase my work as a Cloud Architect, AI Engineer, and Technical Product Manager.",
     
     // Experience
-    experience: "I have experience as a Technical Product Manager at Nutrify AI where I led AI-powered product initiatives and as a Site Reliability Engineer Intern at Mastercard, where I developed a Copilot-style AI assistant that reduced incident triage time by 40%.",
+    experience: "I have experience as a Technical Product Manager at Nutrify AI where I led AI-powered product initiatives and as a Site Reliability Engineer / BizOps at Mastercard, where I developed a Copilot-style AI assistant that reduced incident triage time by 40%.",
     mastercard: "At Mastercard, I developed a Copilot-style AI assistant using Python and LLMs that integrated with Splunk and Remedy APIs, reducing incident triage time by 40%. I also implemented ML detection algorithms analyzing 100k+ log events in real-time and automated EC2/S3 provisioning using Terraform IaC.",
     nutrify: "At Nutrify AI, I led the technical architecture and implementation of an AI-powered nutrition app with ML recommendation engine. I built and deployed a conversational AI chatbot using FastAPI and OpenAI API integration, resulting in a 25% increase in app downloads.",
     
@@ -426,8 +426,8 @@ document.addEventListener('DOMContentLoaded', function() {
       experience: {
         patterns: ['experience', 'work', 'job', 'mastercard', 'nutrify', 'intern', 'internship'],
         responses: [
-          "Shan has experience as a Technical Product Manager at Nutrify AI and as a Site Reliability Engineer Intern at Mastercard. At Mastercard, he developed a Copilot-style AI assistant that reduced incident triage time by 40%. At Nutrify AI, he led the technical architecture of an AI-powered nutrition app with ML recommendation engine.",
-          "Shan's professional experience includes a Site Reliability Engineer Internship at Mastercard where he implemented ML detection algorithms analyzing 100k+ log events in real-time, and a Technical Product Manager role at Nutrify AI where he built conversational AI chatbots resulting in a 25% increase in app downloads."
+          "Shan has experience as a Technical Product Manager at Nutrify AI and as a Site Reliability Engineer / BizOps at Mastercard. At Mastercard, he developed a Copilot-style AI assistant that reduced incident triage time by 40%. At Nutrify AI, he led the technical architecture of an AI-powered nutrition app with ML recommendation engine.",
+          "Shan's professional experience includes a Site Reliability Engineer / BizOps role at Mastercard where he implemented ML detection algorithms analyzing 100k+ log events in real-time, and a Technical Product Manager role at Nutrify AI where he built conversational AI chatbots resulting in a 25% increase in app downloads."
         ]
       },
       // Skills related responses
