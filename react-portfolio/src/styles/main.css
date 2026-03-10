@@ -1564,7 +1564,7 @@ body {
 
 /* Founder-style navbar + eclipse toggle */
 :root {
-  --founder-nav-bg: rgba(252, 253, 255, 0.88);
+  --founder-nav-bg: rgba(255, 255, 255, 0.9);
   --founder-nav-border: rgba(15, 23, 42, 0.11);
   --founder-nav-link: #475569;
   --founder-nav-link-hover: #0f172a;
@@ -1573,8 +1573,8 @@ body {
 }
 
 :root[data-theme="dark"] {
-  --founder-nav-bg: rgba(15, 23, 42, 0.84);
-  --founder-nav-border: rgba(148, 163, 184, 0.2);
+  --founder-nav-bg: rgba(10, 10, 10, 0.9);
+  --founder-nav-border: rgba(229, 231, 235, 0.24);
   --founder-nav-link: #cbd5e1;
   --founder-nav-link-hover: #f8fafc;
   --founder-nav-link-hover-bg: rgba(148, 163, 184, 0.12);
@@ -1594,7 +1594,7 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--founder-nav-border);
-  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .navbar-container {
@@ -2321,8 +2321,9 @@ body {
   }
 
   .site-logo {
-    flex: 0 0 auto;
+    flex: 1 0 100%;
     min-width: 0;
+    justify-content: center;
   }
 
   .navbar-links {
@@ -2391,6 +2392,10 @@ body {
   .navbar-container {
     padding: calc(env(safe-area-inset-top) + 0.52rem) 0.62rem 0.4rem;
     row-gap: 0.32rem;
+  }
+
+  .site-logo {
+    justify-content: center;
   }
 
   .navbar-links {
