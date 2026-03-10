@@ -1554,7 +1554,6 @@ body {
     min-height: var(--shared-tap-target-size);
   }
 
-  .theme-toggle,
   .social-icon,
   .dm-send,
   .send-button {
@@ -1768,6 +1767,18 @@ body {
 
   .site-name {
     font-size: 0.88rem;
+  }
+
+  .theme-toggle.founder-toggle {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    margin-left: 0.28rem;
+  }
+
+  .theme-toggle.founder-toggle i {
+    font-size: 0.66rem;
   }
 
   .navbar-links {
@@ -2392,6 +2403,18 @@ body {
   .navbar-container {
     padding: calc(env(safe-area-inset-top) + 0.52rem) 0.62rem 0.4rem;
     row-gap: 0.32rem;
+  }
+
+  .theme-toggle.founder-toggle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    margin-left: 0.24rem;
+  }
+
+  .theme-toggle.founder-toggle i {
+    font-size: 0.62rem;
   }
 
   .site-logo {
