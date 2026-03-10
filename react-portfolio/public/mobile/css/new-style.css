@@ -3014,3 +3014,274 @@ body {
         min-width: var(--shared-tap-target-size);
     }
 }
+
+/* Founder-style navbar refresh */
+:root {
+    --founder-nav-bg: rgba(252, 253, 255, 0.88);
+    --founder-nav-border: rgba(15, 23, 42, 0.11);
+    --founder-nav-link: #475569;
+    --founder-nav-link-hover: #0f172a;
+    --founder-nav-link-hover-bg: rgba(15, 23, 42, 0.05);
+    --founder-nav-active-line: rgba(15, 23, 42, 0.42);
+}
+
+:root[data-theme="dark"] {
+    --founder-nav-bg: rgba(15, 23, 42, 0.84);
+    --founder-nav-border: rgba(148, 163, 184, 0.2);
+    --founder-nav-link: #cbd5e1;
+    --founder-nav-link-hover: #f8fafc;
+    --founder-nav-link-hover-bg: rgba(148, 163, 184, 0.12);
+    --founder-nav-active-line: rgba(248, 250, 252, 0.55);
+}
+
+.navbar {
+    background-color: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border-bottom: 0;
+}
+
+.sticky-nav {
+    background-color: var(--founder-nav-bg);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--founder-nav-border);
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
+}
+
+.navbar-container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0.82rem 1.35rem;
+}
+
+.site-logo {
+    gap: 0.35rem;
+}
+
+.site-name {
+    font-family: var(--shared-font-mono);
+    font-size: 0.96rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-primary);
+    text-transform: lowercase;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    -webkit-text-fill-color: currentColor;
+}
+
+.site-name:hover {
+    opacity: 0.82;
+}
+
+.theme-toggle.founder-toggle {
+    width: 30px;
+    height: 30px;
+    margin-left: 0.45rem;
+    border-radius: 999px;
+    border: 1px solid var(--founder-nav-border);
+    background: transparent;
+    box-shadow: none;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.theme-toggle.founder-toggle:hover {
+    transform: none;
+    border-color: var(--founder-nav-link);
+    background: var(--founder-nav-link-hover-bg);
+    box-shadow: none;
+}
+
+.theme-toggle.founder-toggle i {
+    font-size: 0.8rem;
+    color: var(--founder-nav-link);
+}
+
+.theme-toggle.founder-toggle:hover i {
+    color: var(--founder-nav-link-hover);
+}
+
+.theme-toggle.founder-toggle::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    opacity: 0;
+    transform: scale(0.85);
+    pointer-events: none;
+}
+
+.theme-toggle.founder-toggle.theme-toggle-animation {
+    animation: founder-toggle-dial 0.42s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.theme-toggle.founder-toggle.theme-toggle-animation::after {
+    animation: founder-toggle-halo 0.42s ease-out;
+}
+
+@keyframes founder-toggle-dial {
+    0% { transform: rotate(0deg); }
+    35% { transform: rotate(-14deg); }
+    68% { transform: rotate(7deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes founder-toggle-halo {
+    0% {
+        opacity: 0;
+        transform: scale(0.85);
+        border-color: var(--founder-nav-active-line);
+    }
+    35% {
+        opacity: 0.35;
+        transform: scale(1.08);
+        border-color: var(--founder-nav-active-line);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.22);
+        border-color: transparent;
+    }
+}
+
+.theme-toggle.founder-toggle .moon-icon,
+.theme-toggle.founder-toggle .sun-icon {
+    position: absolute;
+    transition: transform 0.36s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.24s ease, color 0.24s ease;
+}
+
+.theme-toggle.founder-toggle .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: var(--founder-nav-link);
+}
+
+.theme-toggle.founder-toggle .sun-icon {
+    opacity: 0;
+    transform: rotate(-80deg) scale(0.62);
+    color: var(--founder-nav-link);
+}
+
+[data-theme="dark"] .theme-toggle.founder-toggle .moon-icon {
+    opacity: 0;
+    transform: rotate(80deg) scale(0.62);
+}
+
+[data-theme="dark"] .theme-toggle.founder-toggle .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+    color: var(--founder-nav-link-hover);
+}
+
+.navbar-links {
+    gap: 0.4rem;
+}
+
+.navbar-link {
+    font-family: var(--shared-font-body);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.025em;
+    text-transform: lowercase;
+    color: var(--founder-nav-link);
+    padding: 0.42rem 0.62rem;
+    border-radius: 0.45rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.navbar-link:hover {
+    color: var(--founder-nav-link-hover);
+    background: var(--founder-nav-link-hover-bg);
+}
+
+.navbar-link:hover::after {
+    left: 0.62rem;
+    right: 0.62rem;
+    bottom: 0.22rem;
+    height: 1px;
+    background: var(--founder-nav-active-line);
+}
+
+.navbar-link.active {
+    color: var(--founder-nav-link-hover);
+    font-weight: 600;
+    background: transparent;
+}
+
+.navbar-link.active::after {
+    left: 0.62rem;
+    right: 0.62rem;
+    bottom: 0.22rem;
+    height: 1px;
+    background: var(--founder-nav-active-line);
+    opacity: 0.85;
+}
+
+.navbar-link.active:hover {
+    color: var(--founder-nav-link-hover);
+    background: var(--founder-nav-link-hover-bg);
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        padding: calc(env(safe-area-inset-top) + 0.5rem) 0.88rem 0.44rem;
+        max-width: 100%;
+    }
+
+    .site-name {
+        font-size: 0.88rem;
+    }
+
+    .navbar-links {
+        gap: 0.18rem;
+    }
+
+    .navbar-link {
+        font-size: 0.73rem;
+        padding: 0.36rem 0.48rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: calc(env(safe-area-inset-top) + 0.56rem) 0.62rem 0.42rem;
+    }
+
+    .site-logo {
+        width: auto;
+        margin-bottom: 0;
+        justify-content: flex-start;
+    }
+
+    .site-name {
+        font-size: 0.84rem;
+    }
+
+    .theme-toggle.founder-toggle {
+        width: 27px;
+        height: 27px;
+        margin-left: 0.35rem;
+    }
+
+    .navbar-links {
+        width: auto;
+        margin-top: 0;
+        justify-content: flex-end;
+        gap: 0.1rem;
+        overflow-x: auto;
+        padding-bottom: 0;
+    }
+
+    .navbar-link {
+        font-size: 0.69rem;
+        padding: 0.34rem 0.4rem;
+    }
+}

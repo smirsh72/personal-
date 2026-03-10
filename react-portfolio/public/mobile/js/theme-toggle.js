@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let transitionTimer;
     let themeFrameOne;
     let themeFrameTwo;
+    let toggleAnimationTimer;
 
     const clearThemeTransition = () => {
         clearTimeout(transitionTimer);
@@ -62,30 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Apply new theme with controlled transition
         applyTheme(newTheme, true);
         
-        // Add animation class to the toggle button
+        // Replay the click animation on every toggle.
+        themeToggle.classList.remove('theme-toggle-animation');
+        void themeToggle.offsetWidth;
         themeToggle.classList.add('theme-toggle-animation');
-        
-        // Remove animation class after animation completes
-        setTimeout(() => {
+
+        clearTimeout(toggleAnimationTimer);
+        toggleAnimationTimer = setTimeout(() => {
             themeToggle.classList.remove('theme-toggle-animation');
-        }, 500);
-    });
-    
-    // Add hover animation for the toggle button
-    themeToggle.addEventListener('mouseenter', () => {
-        const currentTheme = root.getAttribute('data-theme') || 'light';
-        const icon = currentTheme === 'light' ? 
-            themeToggle.querySelector('.moon-icon') : 
-            themeToggle.querySelector('.sun-icon');
-        if (icon) {
-            icon.classList.add('icon-hover-animation');
-        }
-    });
-    
-    themeToggle.addEventListener('mouseleave', () => {
-        const icons = themeToggle.querySelectorAll('i');
-        icons.forEach(icon => {
-            icon.classList.remove('icon-hover-animation');
-        });
+        }, 430);
     });
 });

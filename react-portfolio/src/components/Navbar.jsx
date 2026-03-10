@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
+import { motion } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Navbar() {
-  const { theme, toggleTheme } = useTheme();
+  const { toggleTheme } = useTheme();
   const reducedMotion = useReducedMotion();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -12,6 +12,8 @@ export default function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const lastScrollYRef = useRef(0);
   const isHiddenRef = useRef(false);
+  const themeToggleRef = useRef(null);
+  const themeToggleTimerRef = useRef(null);
 
   // Check if mobile
   useEffect(() => {
@@ -73,6 +75,14 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
 
+  useEffect(() => {
+    return () => {
+      if (themeToggleTimerRef.current) {
+        window.clearTimeout(themeToggleTimerRef.current);
+      }
+    };
+  }, []);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -81,9 +91,29 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { id: 'experience', label: 'Experience' },
-    { id: 'certifications', label: 'Certifications' },
+    { id: 'experience', label: 'experience' },
+    { id: 'certifications', label: 'credentials' },
   ];
+
+  const handleThemeToggle = () => {
+    toggleTheme();
+
+    const button = themeToggleRef.current;
+    if (!button) return;
+
+    button.classList.remove('theme-toggle-animation');
+    // Force reflow so repeated clicks replay the micro-interaction.
+    void button.offsetWidth;
+    button.classList.add('theme-toggle-animation');
+
+    if (themeToggleTimerRef.current) {
+      window.clearTimeout(themeToggleTimerRef.current);
+    }
+
+    themeToggleTimerRef.current = window.setTimeout(() => {
+      button.classList.remove('theme-toggle-animation');
+    }, 430);
+  };
 
   return (
     <motion.nav
@@ -104,38 +134,19 @@ export default function Navbar() {
             whileHover={reducedMotion ? {} : { scale: 1.02 }}
             whileTap={reducedMotion ? {} : { scale: 0.98 }}
           >
-            shanirshad.com
+            shan irshad
           </motion.a>
-
           <motion.button
-            className="theme-toggle"
-            onClick={toggleTheme}
-            whileHover={reducedMotion ? {} : { scale: 1.1 }}
-            whileTap={reducedMotion ? {} : { scale: 0.9, rotate: 180 }}
-            transition={{ duration: 0.3 }}
+            ref={themeToggleRef}
+            className="theme-toggle founder-toggle"
+            onClick={handleThemeToggle}
+            whileHover={reducedMotion ? {} : { scale: 1.04 }}
+            whileTap={reducedMotion ? {} : { scale: 0.97 }}
+            transition={{ duration: reducedMotion ? 0.1 : 0.2 }}
             aria-label="Toggle dark mode"
           >
-            <AnimatePresence mode="wait">
-              {theme === 'light' ? (
-                <motion.i
-                  key="moon"
-                  className="fas fa-moon"
-                  initial={{ opacity: 0, y: 10, rotate: -90 }}
-                  animate={{ opacity: 1, y: 0, rotate: 0 }}
-                  exit={{ opacity: 0, y: -10, rotate: 90 }}
-                  transition={{ duration: reducedMotion ? 0.1 : 0.3 }}
-                />
-              ) : (
-                <motion.i
-                  key="sun"
-                  className="fas fa-sun"
-                  initial={{ opacity: 0, y: 10, rotate: -90 }}
-                  animate={{ opacity: 1, y: 0, rotate: 0 }}
-                  exit={{ opacity: 0, y: -10, rotate: 90 }}
-                  transition={{ duration: reducedMotion ? 0.1 : 0.3 }}
-                />
-              )}
-            </AnimatePresence>
+            <i className="fas fa-moon moon-icon" aria-hidden="true" />
+            <i className="fas fa-sun sun-icon" aria-hidden="true" />
           </motion.button>
         </div>
 
@@ -171,7 +182,7 @@ export default function Navbar() {
             }}
             whileHover={reducedMotion ? {} : { y: -2 }}
           >
-            Ghosted
+            ghosted
           </motion.a>
         </div>
       </div>

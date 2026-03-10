@@ -34,9 +34,9 @@ function ExperienceRow({ experience, index, reducedMotion, isMobile }) {
     <motion.div
       ref={rowRef}
       className="exp-row"
-      initial={{ opacity: 0, y: reducedMotion ? 0 : (isMobile ? 14 : 16) }}
+      initial={{ opacity: 0, y: reducedMotion ? 0 : 5 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay: index * 0.1, duration: reducedMotion ? 0.1 : (isMobile ? 0.45 : 0.5), ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ delay: index * 0.05, duration: reducedMotion ? 0.08 : 0.24, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <div className="about-divider" />
       <div className="exp-row-inner">
@@ -73,9 +73,9 @@ export default function Experience() {
       <div className="container">
         <motion.h2
           className="section-label"
-          initial={{ opacity: 0, y: reducedMotion ? 0 : 10 }}
+          initial={{ opacity: 0, y: 0 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: reducedMotion ? 0.1 : 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           Experience
         </motion.h2>

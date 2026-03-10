@@ -7,9 +7,9 @@ function ChatMessage({ content, isUser, reducedMotion }) {
   return (
     <motion.div
       className={`dm-message ${isUser ? 'dm-user' : 'dm-ai'}`}
-      initial={{ opacity: 0, y: reducedMotion ? 0 : 8 }}
+      initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reducedMotion ? 0.1 : 0.3, ease: 'easeOut' }}
+      transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: 'easeOut' }}
     >
       <span className="dm-label">{isUser ? 'you' : 'ai'}</span>
       <span className="dm-text">{content}</span>
@@ -28,7 +28,7 @@ function AIChat({ reducedMotion }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMessages([{ id: 1, content: "what's up. ask me anything about shan.", isUser: false }]);
-    }, 1000);
+    }, 380);
     return () => clearTimeout(timer);
   }, []);
 
@@ -73,7 +73,7 @@ function AIChat({ reducedMotion }) {
         <input
           type="text"
           className="dm-input"
-          placeholder="type something..."
+          placeholder="ask about shan..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSend()}
@@ -95,9 +95,7 @@ function SocialIcon({ href, icon, label, delay, reducedMotion }) {
       aria-label={label}
       initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: reducedMotion ? 0 : delay, duration: 0.4 }}
-      whileHover={reducedMotion ? {} : { scale: 1.06 }}
-      whileTap={reducedMotion ? {} : { scale: 0.9 }}
+      transition={{ delay: reducedMotion ? 0 : delay, duration: reducedMotion ? 0.08 : 0.22 }}
     >
       <i className={icon} />
     </motion.a>
@@ -134,8 +132,8 @@ export default function About() {
     visible: {
       opacity: 1,
       transition: {
-        duration: isMobile ? 0 : 0.6,
-        staggerChildren: isMobile ? 0 : 0.1,
+        duration: isMobile ? 0 : 0.28,
+        staggerChildren: isMobile ? 0 : 0.06,
       },
     },
   };
@@ -146,7 +144,7 @@ export default function About() {
       opacity: 1,
       y: 0,
       transition: {
-        duration: isMobile ? 0 : 0.6,
+        duration: isMobile ? 0 : 0.25,
         ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
@@ -167,7 +165,7 @@ export default function About() {
         />
         <div className="about-identity-text">
           <span className="about-name">Shan Irshad</span>
-          <span className="about-handle">exploring</span>
+          <span className="about-handle">finops</span>
           <div className="social-icons-container">
             <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
             <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
@@ -182,20 +180,24 @@ export default function About() {
       <div className="about-projects">
         <div className="about-project-row">
           <span className="project-label">now</span>
-          <span className="project-arrow">→</span>
-          <span className="project-desc"><strong>Prismo</strong> — AI routing layer for cost, reliability &amp; governance.</span>
+          <div className="project-body">
+            <span className="project-title">Prismo</span>
+            <span className="project-meta">AI routing layer for cost, reliability &amp; governance.</span>
+          </div>
         </div>
         <div className="about-project-row">
           <span className="project-label">before</span>
-          <span className="project-arrow">→</span>
-          <span className="project-desc"><strong>Ghosted</strong> — deploy cloud infra with plain English.</span>
+          <div className="project-body">
+            <span className="project-title">Ghosted</span>
+            <span className="project-meta">Deploy cloud infrastructure with plain English.</span>
+          </div>
         </div>
       </div>
 
       <div className="about-divider" />
 
       {/* Personal */}
-      <p className="about-personal">hobbies: venture &nbsp;·&nbsp; startups &nbsp;·&nbsp; liverpool fc 🔴 &nbsp;·&nbsp; gym</p>
+      <p className="about-personal">hobbies: venture &nbsp;·&nbsp; startups &nbsp;·&nbsp; liverpool fc &nbsp;·&nbsp; gym</p>
 
     </div>
   );
@@ -207,12 +209,12 @@ export default function About() {
           <div className="about-grid">
             {profileContent(false)}
             <div className="about-right-column">
-              <div className="ai-status-badge">
-                <span className="status-dot" />
-                <span className="status-text">shan.ai · online</span>
-              </div>
-              <AIChat reducedMotion={true} />
+            <div className="ai-status-badge">
+              <span className="status-dot" />
+              <span className="status-text">shan assistant · online</span>
             </div>
+            <AIChat reducedMotion={true} />
+          </div>
           </div>
         </div>
       </section>
@@ -235,12 +237,12 @@ export default function About() {
           <motion.div className="about-right-column" variants={itemVariants}>
             <motion.div
               className="ai-status-badge"
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.5, duration: 0.4 }}
+              initial={{ opacity: 0, y: 0 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.24, duration: 0.2 }}
             >
               <span className="status-dot" />
-              <span className="status-text">shan.ai · online</span>
+              <span className="status-text">shan assistant · online</span>
             </motion.div>
             <AIChat reducedMotion={reducedMotion} />
           </motion.div>

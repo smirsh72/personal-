@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Get the theme toggle button
     const themeToggle = document.getElementById('theme-toggle');
+    if (!themeToggle) return;
+    let toggleAnimationTimer;
     
     // Check for saved theme preference only
     const savedTheme = localStorage.getItem('theme');
@@ -26,29 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Save theme preference
         localStorage.setItem('theme', newTheme);
         
-        // Add animation class to the toggle button
+        // Replay the click animation on every toggle.
+        themeToggle.classList.remove('theme-toggle-animation');
+        void themeToggle.offsetWidth;
         themeToggle.classList.add('theme-toggle-animation');
         
-        // Remove animation class after animation completes
-        setTimeout(() => {
+        clearTimeout(toggleAnimationTimer);
+        toggleAnimationTimer = setTimeout(() => {
             themeToggle.classList.remove('theme-toggle-animation');
-        }, 500);
-    });
-    
-    // Add hover animation for the toggle button
-    themeToggle.addEventListener('mouseenter', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-        const icon = currentTheme === 'light' ? 
-            themeToggle.querySelector('.moon-icon') : 
-            themeToggle.querySelector('.sun-icon');
-            
-        icon.classList.add('icon-hover-animation');
-    });
-    
-    themeToggle.addEventListener('mouseleave', () => {
-        const icons = themeToggle.querySelectorAll('i');
-        icons.forEach(icon => {
-            icon.classList.remove('icon-hover-animation');
-        });
+        }, 430);
     });
 });
