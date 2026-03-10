@@ -1838,7 +1838,7 @@ body {
   --founder-accent: #cbd5e1;
   --founder-nav-link: #cbd5e1;
   --founder-nav-link-hover: #f8fafc;
-  --founder-nav-link-hover-bg: rgba(148, 163, 184, 0.12);
+  --founder-nav-link-hover-bg: rgba(248, 250, 252, 0.08);
   --founder-nav-active-line: rgba(248, 250, 252, 0.45);
   --status-dot-color: #22c55e;
   --dark-outline: rgba(229, 231, 235, 0.42);
@@ -1864,8 +1864,49 @@ body {
   color: #64748b;
 }
 
+.navbar-link:link,
+.navbar-link:visited {
+  color: #64748b;
+  text-decoration: none;
+}
+
 .navbar-link:hover {
   color: #0f172a;
+}
+
+:root[data-theme="dark"] .navbar-link:link,
+:root[data-theme="dark"] .navbar-link:visited {
+  color: var(--founder-nav-link);
+  text-decoration: none;
+}
+
+:root[data-theme="dark"] .navbar-link:hover,
+:root[data-theme="dark"] .navbar-link:active,
+:root[data-theme="dark"] .navbar-link:focus-visible {
+  color: var(--founder-nav-link-hover);
+}
+
+/* Final nav-state override to prevent browser default visited/hover blue/underline. */
+.navbar-links .navbar-link,
+.navbar-links .navbar-link:link,
+.navbar-links .navbar-link:visited,
+.navbar-links .navbar-link:hover,
+.navbar-links .navbar-link:active,
+.navbar-links .navbar-link:focus-visible {
+  text-decoration: none !important;
+}
+
+:root[data-theme="dark"] .navbar-links .navbar-link,
+:root[data-theme="dark"] .navbar-links .navbar-link:link,
+:root[data-theme="dark"] .navbar-links .navbar-link:visited,
+:root[data-theme="dark"] .navbar-links .navbar-link:active,
+:root[data-theme="dark"] .navbar-links .navbar-link:focus-visible {
+  color: var(--founder-nav-link) !important;
+}
+
+:root[data-theme="dark"] .navbar-links .navbar-link:hover {
+  color: var(--founder-nav-link-hover) !important;
+  text-decoration: none !important;
 }
 
 .about-section,
