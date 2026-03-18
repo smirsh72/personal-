@@ -43,7 +43,7 @@ function ProjectRow({ project, index, reducedMotion, isMobile }) {
         <div className="exp-body">
           <div className="exp-header">
             <a href={project.link} target="_blank" rel="noopener noreferrer" className="cert-title-link">
-              {project.title} ↗
+              {project.title} {'\u2197\uFE0E'}
             </a>
           </div>
           <p className="exp-description">{project.description}</p>

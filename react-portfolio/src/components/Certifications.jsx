@@ -44,7 +44,7 @@ function CertRow({ cert, index, reducedMotion, isMobile }) {
         <div className="exp-body">
           <div className="exp-header">
             <a href={cert.link} target="_blank" rel="noopener noreferrer" className="cert-title-link">
-              {cert.issuer} {cert.title} ↗
+              {cert.issuer} {cert.title} {'\u2197\uFE0E'}
             </a>
           </div>
           <p className="exp-description">{cert.description}</p>
