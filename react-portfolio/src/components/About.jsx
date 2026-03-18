@@ -61,7 +61,7 @@ export default function About() {
         >
           <motion.div className="about-hero-left" variants={itemVariants}>
             <h1 className="about-hero-name">Shan Irshad</h1>
-            <p className="about-hero-tagline">Infrastructure, ML, and startups.</p>
+            <p className="about-hero-tagline">Infrastructure, ML, and venture.</p>
             <div className="about-social-links">
               <SocialLink href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" />
               <SocialLink href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" />
