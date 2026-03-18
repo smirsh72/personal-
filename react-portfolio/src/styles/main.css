@@ -2304,7 +2304,7 @@ body {
 }
 
 .section-label {
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin-bottom: 1.3rem;
 }
 
@@ -2339,7 +2339,7 @@ body {
 }
 
 .exp-description {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.6;
   opacity: 0.75;
 }
