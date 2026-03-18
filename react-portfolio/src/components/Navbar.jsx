@@ -58,7 +58,7 @@ export default function Navbar() {
       lastScrollYRef.current = currentScrollY;
 
       // Determine active section
-      const sections = ['certifications', 'experience', 'about'];
+      const sections = ['projects', 'experience', 'about'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element && element.getBoundingClientRect().top <= 100) {
@@ -92,7 +92,7 @@ export default function Navbar() {
 
   const navLinks = [
     { id: 'experience', label: 'experience' },
-    { id: 'certifications', label: 'credentials' },
+    { id: 'projects', label: 'projects' },
   ];
 
   const handleThemeToggle = () => {
@@ -126,30 +126,6 @@ export default function Navbar() {
       }}
     >
       <div className="navbar-container">
-        <div className="site-logo">
-          <motion.a
-            href="#about"
-            className="site-name"
-            onClick={(e) => { e.preventDefault(); scrollToSection('about'); }}
-            whileHover={reducedMotion ? {} : { scale: 1.02 }}
-            whileTap={reducedMotion ? {} : { scale: 0.98 }}
-          >
-            shan irshad
-          </motion.a>
-          <motion.button
-            ref={themeToggleRef}
-            className="theme-toggle founder-toggle"
-            onClick={handleThemeToggle}
-            whileHover={reducedMotion ? {} : { scale: 1.04 }}
-            whileTap={reducedMotion ? {} : { scale: 0.97 }}
-            transition={{ duration: reducedMotion ? 0.1 : 0.2 }}
-            aria-label="Toggle dark mode"
-          >
-            <i className="fas fa-moon moon-icon" aria-hidden="true" />
-            <i className="fas fa-sun sun-icon" aria-hidden="true" />
-          </motion.button>
-        </div>
-
         <div className="navbar-links">
           {navLinks.map((link, index) => (
             <motion.a
@@ -171,19 +147,18 @@ export default function Navbar() {
               {link.label}
             </motion.a>
           ))}
-          <motion.a
-            href="/ghosted.html"
-            className="navbar-link"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: reducedMotion ? 0 : 0.3,
-              duration: reducedMotion ? 0.1 : 0.4
-            }}
-            whileHover={reducedMotion ? {} : { y: -2 }}
+          <motion.button
+            ref={themeToggleRef}
+            className="theme-toggle founder-toggle"
+            onClick={handleThemeToggle}
+            whileHover={reducedMotion ? {} : { scale: 1.04 }}
+            whileTap={reducedMotion ? {} : { scale: 0.97 }}
+            transition={{ duration: reducedMotion ? 0.1 : 0.2 }}
+            aria-label="Toggle dark mode"
           >
-            ghosted
-          </motion.a>
+            <i className="fas fa-moon moon-icon" aria-hidden="true" />
+            <i className="fas fa-sun sun-icon" aria-hidden="true" />
+          </motion.button>
         </div>
       </div>
     </motion.nav>

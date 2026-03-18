@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
-import Navbar from './components/Navbar';
 import About from './components/About';
 import Experience from './components/Experience';
-import Certifications from './components/Certifications';
+import Projects from './components/Projects';
 import './styles/main.css';
 
 function App() {
@@ -25,11 +24,10 @@ function App() {
   return (
     <ThemeProvider>
       <div className="app">
-        <Navbar />
         <main>
           <About />
           <Experience />
-          <Certifications />
+          <Projects />
         </main>
       </div>
     </ThemeProvider>

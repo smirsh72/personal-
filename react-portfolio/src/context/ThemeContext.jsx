@@ -3,10 +3,7 @@ import { createContext, useContext, useState, useEffect, useRef } from 'react';
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved || 'light';
-  });
+  const [theme, setTheme] = useState('dark');
   const hasMounted = useRef(false);
   const transitionTimerRef = useRef(null);
   const transitionFrameOneRef = useRef(null);

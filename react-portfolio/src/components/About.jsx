@@ -1,121 +1,29 @@
 import { useState, useRef, useEffect } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { useReducedMotion } from '../hooks/useReducedMotion';
+import { motion, useInView } from 'framer-motion';
 
-// Chat message component — plain text, no bubbles
-function ChatMessage({ content, isUser, reducedMotion }) {
+function SocialLink({ href, icon, label }) {
   return (
-    <motion.div
-      className={`dm-message ${isUser ? 'dm-user' : 'dm-ai'}`}
-      initial={{ opacity: 0, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: 'easeOut' }}
-    >
-      <span className="dm-label">{isUser ? 'you' : 'ai'}</span>
-      <span className="dm-text">{content}</span>
-    </motion.div>
-  );
-}
-
-// AI Chat interface
-function AIChat({ reducedMotion }) {
-  const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
-  const chatContainerRef = useRef(null);
-  const normalizeAssistantText = (text) => String(text || '').toLowerCase();
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMessages([{ id: 1, content: "what's up. ask me anything about shan.", isUser: false }]);
-    }, 380);
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }
-  }, [messages, isTyping]);
-
-  const handleSend = async () => {
-    if (!input.trim()) return;
-    const userMessage = { id: Date.now(), content: input, isUser: true };
-    setMessages((prev) => [...prev, userMessage]);
-    setInput('');
-    setIsTyping(true);
-    try {
-      const res = await fetch('/.netlify/functions/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input }),
-      });
-      const data = await res.json();
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, content: normalizeAssistantText(data.reply || "couldn't get a response."), isUser: false }]);
-    } catch {
-      setIsTyping(false);
-      setMessages((prev) => [...prev, { id: Date.now() + 1, content: normalizeAssistantText("something went wrong. try again."), isUser: false }]);
-    }
-  };
-
-  return (
-    <div className="dm-container">
-      <div className="dm-messages" ref={chatContainerRef}>
-        <AnimatePresence>
-          {messages.map((msg) => (
-            <ChatMessage key={msg.id} content={msg.content} isUser={msg.isUser} reducedMotion={reducedMotion} />
-          ))}
-        </AnimatePresence>
-        {isTyping && <div className="dm-typing"><span className="dm-label">ai</span><span className="dm-text">...</span></div>}
-      </div>
-      <div className="dm-input-row">
-        <input
-          type="text"
-          className="dm-input"
-          placeholder="ask about shan..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-        />
-        <button className="dm-send" onClick={handleSend}>→</button>
-      </div>
-    </div>
-  );
-}
-
-// Social icon component
-function SocialIcon({ href, icon, label, delay, reducedMotion }) {
-  return (
-    <motion.a
+    <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="social-icon"
+      className="about-social-link"
       aria-label={label}
-      initial={{ opacity: 0, y: reducedMotion ? 0 : 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: reducedMotion ? 0 : delay, duration: reducedMotion ? 0.08 : 0.22 }}
     >
       <i className={icon} />
-    </motion.a>
+      <span>{label}</span>
+    </a>
   );
 }
 
-
-// Check if mobile on initial render (SSR-safe)
 const getInitialMobile = () => {
-  if (typeof window !== 'undefined') {
-    return window.innerWidth <= 768;
-  }
+  if (typeof window !== 'undefined') return window.innerWidth <= 768;
   return false;
 };
 
 export default function About() {
-  const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
-  const [imgHovered, setImgHovered] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 768);
@@ -123,18 +31,13 @@ export default function About() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Always trigger on mobile (no margin delay)
   const isInView = useInView(sectionRef, { once: true, margin: isMobile ? '200px' : '-100px' });
 
-  // Mobile: instant, Desktop: staggered fade
   const containerVariants = {
     hidden: { opacity: isMobile ? 1 : 0 },
     visible: {
       opacity: 1,
-      transition: {
-        duration: isMobile ? 0 : 0.28,
-        staggerChildren: isMobile ? 0 : 0.06,
-      },
+      transition: { duration: isMobile ? 0 : 0.3, staggerChildren: isMobile ? 0 : 0.08 },
     },
   };
 
@@ -143,108 +46,37 @@ export default function About() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: isMobile ? 0 : 0.25,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      },
+      transition: { duration: isMobile ? 0 : 0.28, ease: [0.25, 0.46, 0.45, 0.94] },
     },
   };
-
-  const profileContent = (animate) => (
-    <div className="about-left-column">
-      {/* Identity block */}
-      <div className="about-identity">
-        <img
-          src="/images/profile-pic.jpg"
-          alt="Shan Irshad"
-          className={`profile-image-circle${imgHovered ? ' profile-image-hovered' : ''}`}
-          loading="eager"
-          decoding="async"
-          onMouseEnter={() => setImgHovered(true)}
-          onMouseLeave={() => setImgHovered(false)}
-        />
-        <div className="about-identity-text">
-          <span className="about-name">Shan Irshad</span>
-          <span className="about-handle">finops</span>
-          <div className="social-icons-container">
-            <SocialIcon href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" delay={0.6} reducedMotion={!animate} />
-            <SocialIcon href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" delay={0.7} reducedMotion={!animate} />
-            <SocialIcon href="tel:+14695449186" icon="fas fa-phone" label="Phone" delay={0.8} reducedMotion={!animate} />
-          </div>
-        </div>
-      </div>
-
-      <div className="about-divider" />
-
-      {/* Projects */}
-      <div className="about-projects">
-        <div className="about-project-row">
-          <span className="project-label">now</span>
-          <div className="project-body">
-            <span className="project-title">Prismo</span>
-            <span className="project-meta">AI routing layer for cost, reliability &amp; governance.</span>
-          </div>
-        </div>
-        <div className="about-project-row">
-          <span className="project-label">before</span>
-          <div className="project-body">
-            <span className="project-title">Ghosted</span>
-            <span className="project-meta">Deploy cloud infrastructure with plain English.</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="about-divider" />
-
-      {/* Personal */}
-      <p className="about-personal">hobbies: venture &nbsp;·&nbsp; startups &nbsp;·&nbsp; liverpool fc &nbsp;·&nbsp; gym</p>
-
-    </div>
-  );
-
-  if (isMobile) {
-    return (
-      <section id="about" className="modern-section about-section" ref={sectionRef}>
-        <div className="container">
-          <div className="about-grid">
-            {profileContent(false)}
-            <div className="about-right-column">
-            <div className="ai-status-badge">
-              <span className="status-dot" />
-              <span className="status-text">shan assistant · online</span>
-            </div>
-            <AIChat reducedMotion={true} />
-          </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section id="about" className="modern-section about-section" ref={sectionRef}>
       <div className="container">
         <motion.div
-          className="about-grid"
+          className="about-hero-grid"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <motion.div variants={itemVariants}>
-            {profileContent(true)}
+          <motion.div className="about-hero-left" variants={itemVariants}>
+            <h1 className="about-hero-name">Shan Irshad</h1>
+            <p className="about-hero-tagline">Infrastructure, ML, and startups.</p>
+            <div className="about-social-links">
+              <SocialLink href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" />
+              <SocialLink href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" />
+              <SocialLink href="tel:+14695449186" icon="fas fa-phone" label="Phone" />
+            </div>
           </motion.div>
 
-          <motion.div className="about-right-column" variants={itemVariants}>
-            <motion.div
-              className="ai-status-badge"
-              initial={{ opacity: 0, y: 0 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.24, duration: 0.2 }}
-            >
-              <span className="status-dot" />
-              <span className="status-text">shan assistant · online</span>
-            </motion.div>
-            <AIChat reducedMotion={reducedMotion} />
+          <motion.div className="about-hero-right" variants={itemVariants}>
+            <img
+              src="/images/profile-pic.jpg"
+              alt="Shan Irshad"
+              className="about-hero-photo"
+              loading="eager"
+              decoding="async"
+            />
           </motion.div>
         </motion.div>
       </div>
