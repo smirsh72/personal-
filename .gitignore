@@ -19,7 +19,6 @@ Thumbs.db
 *.swo
 
 # Build files
-dist/
 build/
 .cache/
 
