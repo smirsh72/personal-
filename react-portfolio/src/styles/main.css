@@ -2446,6 +2446,10 @@ body {
     overflow-wrap: break-word;
   }
 
+  .cert-title-link {
+    font-size: 0.9rem;
+  }
+
   .exp-description {
     font-size: 0.85rem;
     white-space: normal;
