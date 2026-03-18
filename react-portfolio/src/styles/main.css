@@ -2551,6 +2551,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   gap: 0;
+  padding-top: 56px;
 }
 
 .about-hero-name {
@@ -2560,7 +2561,7 @@ body {
   color: var(--text-primary);
   letter-spacing: -0.03em;
   line-height: 1.05;
-  margin: 0 0 1rem 0;
+  margin: 0 0 0.6rem 0;
   padding-left: 0;
   width: 100%;
 }
@@ -2571,7 +2572,7 @@ body {
   color: var(--text-secondary);
   opacity: 0.8;
   line-height: 1.5;
-  margin: 0 0 1.6rem 4px;
+  margin: 0 0 1.2rem 4px;
   padding-left: 0;
   width: 100%;
 }
@@ -2679,6 +2680,7 @@ body {
   .about-hero-left {
     align-items: center;
     text-align: center;
+    padding-top: 0;
   }
 
   .about-hero-name {
