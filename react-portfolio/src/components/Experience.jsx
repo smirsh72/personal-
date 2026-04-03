@@ -7,7 +7,7 @@ const experiences = [
     id: 1,
     date: '2025',
     company: 'Mastercard',
-    title: 'Site Reliability Engineer',
+    title: 'Platform Engineer',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
     description: 'AI tooling for incident triage and infra automation at scale.',
   },
@@ -18,6 +18,14 @@ const experiences = [
     title: 'Product Manager',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
     description: 'Shipped LLM and computer vision features for an AI nutrition platform.',
+  },
+  {
+    id: 3,
+    date: '2026',
+    company: 'LvlUp VC',
+    title: 'Venture',
+    logo: 'https://shanirshad.com/images/lvlup_vc_logo.jpeg',
+    description: "Selected for LvlUp VC’s Residency Program, partnering with AI founders on thesis-driven strategy, category creation, and scaling.",
   },
 ];
 
