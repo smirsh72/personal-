@@ -4,6 +4,14 @@ import { useReducedMotion } from '../hooks/useReducedMotion';
 
 const experiences = [
   {
+    id: 3,
+    date: 'current',
+    company: 'LvlUp VC',
+    title: 'Venture',
+    logo: 'https://shanirshad.com/images/lvlup_vc_logo.jpeg',
+    description: "Selected for LvlUp VC’s Residency Program, partnering with AI founders on thesis-driven strategy, category creation, and scaling.",
+  },
+  {
     id: 1,
     date: '2025',
     company: 'Mastercard',
@@ -18,14 +26,6 @@ const experiences = [
     title: 'Product Manager',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
     description: 'Shipped LLM and computer vision features for an AI nutrition platform.',
-  },
-  {
-    id: 3,
-    date: '2026',
-    company: 'LvlUp VC',
-    title: 'Venture',
-    logo: 'https://shanirshad.com/images/lvlup_vc_logo.jpeg',
-    description: "Selected for LvlUp VC’s Residency Program, partnering with AI founders on thesis-driven strategy, category creation, and scaling.",
   },
 ];
 
