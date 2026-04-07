@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ThemeProvider } from './context/ThemeContext';
 import About from './components/About';
 import Experience from './components/Experience';
-import Projects from './components/Projects';
+import Products from './components/Projects';
 import './styles/main.css';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
         <main>
           <About />
           <Experience />
-          <Projects />
+          <Products />
         </main>
       </div>
     </ThemeProvider>

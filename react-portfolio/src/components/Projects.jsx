@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useReducedMotion } from '../hooks/useReducedMotion';
 
-const projects = [
+const products = [
   {
     id: 1,
     label: 'now',
@@ -26,7 +26,7 @@ const getInitialMobile = () => {
   return false;
 };
 
-function ProjectRow({ project, index, reducedMotion, isMobile }) {
+function ProductRow({ product, index, reducedMotion, isMobile }) {
   const rowRef = useRef(null);
   const isInView = useInView(rowRef, { once: true, margin: isMobile ? '-20px' : '-50px' });
 
@@ -42,19 +42,19 @@ function ProjectRow({ project, index, reducedMotion, isMobile }) {
       <div className="exp-row-inner">
         <div className="exp-body">
           <div className="exp-header">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" className="cert-title-link">
-              {project.title} {'\u2197\uFE0E'}
+            <a href={product.link} target="_blank" rel="noopener noreferrer" className="cert-title-link">
+              {product.title} {'\u2197\uFE0E'}
             </a>
           </div>
-          <p className="exp-description">{project.description}</p>
+          <p className="exp-description">{product.description}</p>
         </div>
-        <img src={project.logo} alt={project.title} className="exp-logo project-logo-right" />
+        <img src={product.logo} alt={product.title} className="exp-logo project-logo-right" />
       </div>
     </motion.div>
   );
 }
 
-export default function Projects() {
+export default function Products() {
   const reducedMotion = useReducedMotion();
   const sectionRef = useRef(null);
   const [isMobile, setIsMobile] = useState(getInitialMobile);
@@ -75,14 +75,14 @@ export default function Projects() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          Projects
+          Products
         </motion.h2>
 
         <div className="exp-list">
-          {projects.map((project, index) => (
-            <ProjectRow
-              key={project.id}
-              project={project}
+          {products.map((product, index) => (
+            <ProductRow
+              key={product.id}
+              product={product}
               index={index}
               reducedMotion={reducedMotion}
               isMobile={isMobile}
