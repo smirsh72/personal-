@@ -23,7 +23,7 @@ const experiences = [
     id: 2,
     date: '2025',
     company: 'Nutrify AI',
-    title: 'Product Manager',
+    title: 'Product Engineer',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
     description: 'Shipped LLM and computer vision features for an AI nutrition platform.',
   },
