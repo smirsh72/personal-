@@ -2063,7 +2063,7 @@ body {
   min-width: 0;
   font-size: 0.6rem;
   font-family: var(--shared-font-mono);
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.08em;
   color: var(--text-secondary);
   padding-top: 0.08rem;
@@ -2595,7 +2595,7 @@ body {
   gap: 0.5rem;
   font-family: var(--shared-font-mono);
   font-size: 0.78rem;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 0.07em;
   color: #000000;
   text-decoration: none;
