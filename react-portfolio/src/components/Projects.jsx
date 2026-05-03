@@ -7,7 +7,7 @@ const products = [
     id: 1,
     label: 'now',
     title: 'Prismo',
-    description: 'AI routing layer for cost, reliability & governance.',
+    description: 'ai routing layer for cost, reliability & governance.',
     link: 'https://getprismo.dev',
     logo: '/images/prismo-logo.png',
   },
@@ -15,7 +15,7 @@ const products = [
     id: 2,
     label: 'before',
     title: 'Ghosted',
-    description: 'Deploy cloud infrastructure with plain English.',
+    description: 'deploy cloud infrastructure with plain english.',
     link: 'https://ghostedai.net',
     logo: '/images/ghosted-logo.png',
   },
@@ -75,7 +75,7 @@ export default function Products() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          Products
+          products
         </motion.h2>
 
         <div className="exp-list">

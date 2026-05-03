@@ -63,9 +63,9 @@ export default function About() {
             <h1 className="about-hero-name">shan irshad</h1>
             <p className="about-hero-tagline">infrastructure, ml, and venture.</p>
             <div className="about-social-links">
-              <SocialLink href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="LinkedIn" />
-              <SocialLink href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="Email" />
-              <SocialLink href="tel:+14695449186" icon="fas fa-phone" label="Phone" />
+              <SocialLink href="https://www.linkedin.com/in/shan-irshad/" icon="fab fa-linkedin-in" label="linkedin" />
+              <SocialLink href="mailto:shanirshad8@gmail.com" icon="far fa-envelope" label="email" />
+              <SocialLink href="tel:+14695449186" icon="fas fa-phone" label="phone" />
             </div>
           </motion.div>
 

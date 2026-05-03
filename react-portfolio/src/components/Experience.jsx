@@ -7,25 +7,25 @@ const experiences = [
     id: 3,
     date: 'current',
     company: 'LvlUp VC',
-    title: 'Venture',
+    title: 'venture',
     logo: 'https://shanirshad.com/images/lvlup_vc_logo.jpeg',
-    description: "Selected for LvlUp VC’s Residency Program, partnering with AI founders on thesis-driven strategy, category creation, and scaling.",
+    description: "selected for LvlUp VC's residency program, partnering with AI founders on thesis-driven strategy, category creation, and scaling.",
   },
   {
     id: 1,
     date: '2025',
     company: 'Mastercard',
-    title: 'Platform Engineer',
+    title: 'platform engineer',
     logo: 'https://shanirshad.com/images/mastercard-logo.png',
-    description: 'AI tooling for incident triage and infra automation at scale.',
+    description: 'ai tooling for incident triage and infra automation at scale.',
   },
   {
     id: 2,
     date: '2025',
     company: 'Nutrify AI',
-    title: 'Product Engineer',
+    title: 'product engineer',
     logo: 'https://shanirshad.com/images/nutrify-logo.jpeg',
-    description: 'Shipped LLM and computer vision features for an AI nutrition platform.',
+    description: 'shipped llm and computer vision features for an ai nutrition platform.',
   },
 ];
 
@@ -84,7 +84,7 @@ export default function Experience() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: reducedMotion ? 0.08 : 0.22, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          Experience
+          experience
         </motion.h2>
 
         <div className="exp-list">
