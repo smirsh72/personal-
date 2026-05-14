@@ -1,16 +1,17 @@
-# React + Vite
+# shan irshad portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio built with React, Vite, and Framer Motion.
 
-Currently, two official plugins are available:
+## scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `npm run dev` starts the local Vite server.
+- `npm run build` builds the static site into the repository root.
+- `npm run lint` runs ESLint.
 
-## React Compiler
+## structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/data/portfolio.js` contains the portfolio content.
+- `src/sections` contains the page sections.
+- `src/ui` contains small reusable UI pieces.
+- `src/styles/main.css` contains the site styles.
+- `public/images` contains the source image assets.

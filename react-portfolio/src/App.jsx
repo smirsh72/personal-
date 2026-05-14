@@ -1,19 +1,17 @@
 import { useEffect } from 'react';
-import { ThemeProvider } from './context/ThemeContext';
-import About from './components/About';
-import Experience from './components/Experience';
-import Products from './components/Projects';
+import About from './sections/About';
+import Experience from './sections/Experience';
+import Products from './sections/Products';
 import './styles/main.css';
 
 function App() {
   useEffect(() => {
-    // Clear any hash and scroll to top on initial load
     if (window.location.hash) {
       window.history.replaceState(null, '', window.location.pathname);
     }
+
     window.scrollTo(0, 0);
 
-    // Enable smooth scrolling after initial render
     const enableSmooth = setTimeout(() => {
       document.documentElement.classList.add('smooth-scroll');
     }, 100);
@@ -22,15 +20,11 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="app">
-        <main>
-          <About />
-          <Experience />
-          <Products />
-        </main>
-      </div>
-    </ThemeProvider>
+    <main>
+      <About />
+      <Experience />
+      <Products />
+    </main>
   );
 }
 
