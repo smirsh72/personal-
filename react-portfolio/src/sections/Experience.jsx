@@ -3,7 +3,7 @@ import TimelineRow from '../ui/TimelineRow';
 
 export default function Experience() {
   return (
-    <section id="experience" className="modern-section experience-section">
+    <section id="experience" className="modern-section content-section">
       <div className="container">
         <h2 className="section-label">experience</h2>
 

@@ -6,12 +6,6 @@ import './styles/main.css';
 
 function App() {
   useEffect(() => {
-    if (window.location.hash) {
-      window.history.replaceState(null, '', window.location.pathname);
-    }
-
-    window.scrollTo(0, 0);
-
     const enableSmooth = setTimeout(() => {
       document.documentElement.classList.add('smooth-scroll');
     }, 100);
