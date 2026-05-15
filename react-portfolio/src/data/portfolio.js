@@ -5,7 +5,7 @@ export const socialLinks = [
     label: 'linkedin',
   },
   {
-    href: 'https://github.com/smirsh72',
+    href: 'https://github.com/shanirsh',
     icon: 'fab fa-github',
     label: 'github',
   },
